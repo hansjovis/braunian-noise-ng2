@@ -1,6 +1,11 @@
 {
   "name": "braunian-noise-ng2",
   "version": "0.0.0",
+  "description": "The Angular 2 version of my website / blog.",
+  "author": {
+    "name": "Hans-Christiaan Braun"
+  },
+  "keywords": ["Blog"],
   "license": "MIT",
   "scripts": {
     "ng": "ng",

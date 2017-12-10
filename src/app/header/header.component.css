@@ -1,0 +1,42 @@
+.logo img {
+  width: 220px;
+  margin-bottom: 20px;
+}
+
+.nav-links {
+  background-color: #1f69a7;
+  padding: 20px;  
+  border-radius: 15px 15px 0px 0px;
+  box-shadow: 0px 5px 2px #cccccc;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+@media (min-width:600px) {
+  .nav-links a:hover {
+    background-color: white;
+    color: #1f69a7;
+    padding: 20px;
+  }
+}
+
+@media (max-width:600px) {
+  .nav-links a:hover {
+    text-decoration: underline;
+    color: white;
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+}
+
+
+
+
+
+
