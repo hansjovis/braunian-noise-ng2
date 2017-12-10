@@ -10,7 +10,9 @@ import { SidebarAuthorComponent } from './sidebar-author/sidebar-author.componen
 import { ArticleViewComponent } from './article-view/article-view.component';
 import { PortfolioViewComponent } from './portfolio-view/portfolio-view.component';
 import { AboutViewComponent } from './about-view/about-view.component';
+
 import { AppRoutingModule } from './/app-routing.module';
+import { ArticleService } from './article.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,7 @@ import { AppRoutingModule } from './/app-routing.module';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ArticleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
