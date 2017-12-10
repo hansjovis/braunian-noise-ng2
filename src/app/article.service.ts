@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
 
 import { Article } from './article';
 import { MOCK_ARTICLES } from './mock-articles'
@@ -8,8 +10,8 @@ export class ArticleService {
 
   constructor() { }
   
-  getArticles(): Article[] {
-    return MOCK_ARTICLES;
+  getArticles(): Observable<Article[]> {
+    return of(MOCK_ARTICLES);
   }
 
 }
