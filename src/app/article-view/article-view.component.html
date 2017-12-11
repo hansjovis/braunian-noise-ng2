@@ -1,3 +1,22 @@
-<p>
-  article-view works!
-</p>
+<div>
+  <div *ngFor="let article of articles">
+    <div class="row bn-article-preview">
+      <img class="bn-preview-img hidden-xs col-sm-4" src="{{article.img_ref}}">
+      <div class="col-sm-8">
+      
+        <!-- Title. -->
+        <h4 class="bn-preview-title"> 
+          <a> {{article.title}} </a>				
+        </h4>
+        
+        <!-- Content preview. -->
+        <div class="bn-preview-text">{{article.description}}</div> 
+        
+        <!-- Footer (like-button, author, date posted etc.). -->
+        <h4 class="pull-right"> 
+          <small style="margin-left: 20px;"> Posted on {{article.date | date:'yyyy-MM-dd'}} by {{article.author}}</small> 					
+        </h4>        
+      </div>
+    </div>
+  </div>
+</div>
