@@ -1,0 +1,30 @@
+
+.bn-preview-row {
+  margin-bottom: 10px;
+}
+
+.bn-preview {
+  position: relative;
+}
+
+.bn-preview-img {
+  object-fit: cover;
+  height: 270px;
+  width: 270px;
+  
+  border-radius: 5px;
+}
+
+.bn-preview-title {  
+
+  color: white;
+  
+  background: rgba(0,0,0,0.7);
+  border-radius: 5px;
+
+  position: absolute; 
+  top: 50%; 
+  left: 10%;
+  
+  padding: 10px;
+}

@@ -1,3 +1,11 @@
-<p>
-  portfolio-view works!
-</p>
+<div>
+
+  <div *ngFor="let x of previews; let i=index" class="bn-preview-row row">
+    <div *ngFor="let preview of previews | slice:i*3:i*3+3" class="bn-preview col-md-4">
+      <img src="{{preview.img_ref}}" class="bn-preview-img">
+      <h2>
+        <span class="bn-preview-title">{{preview.title}}</span>
+      </h2>
+    </div> 
+  </div>
+</div>

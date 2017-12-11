@@ -13,6 +13,7 @@ import { AboutViewComponent } from './about-view/about-view.component';
 
 import { AppRoutingModule } from './/app-routing.module';
 import { ArticleService } from './article.service';
+import { PortfolioItemService } from './portfolio-item.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { ArticleService } from './article.service';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [ArticleService],
+  providers: [ArticleService, PortfolioItemService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
