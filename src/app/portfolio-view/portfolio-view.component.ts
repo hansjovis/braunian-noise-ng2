@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { PortfolioItemService } from '../portfolio-item.service';
+import { PortfolioItemPreview } from '../portfolio-item-preview'
+
 @Component({
   selector: 'app-portfolio-view',
   templateUrl: './portfolio-view.component.html',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PortfolioViewComponent implements OnInit {
 
-  constructor() { }
+  previews: PortfolioItemPreview[];
+
+  constructor(private portfolioItemService: PortfolioItemService) { }
 
   ngOnInit() {
+    this.getPreviews();
+  }
+  
+  getPreviews() {
+    this.portfolioItemService.getPreviews()
+        .subscribe(previews => this.previews = previews);
   }
 
 }
