@@ -1,6 +1,6 @@
 
 .bn-preview-row {
-  margin-bottom: 10px;
+  
 }
 
 .bn-preview {
@@ -13,17 +13,26 @@
   width: 270px;
   
   border-radius: 5px;
+  
+  transform: scale(0.95);
+  transition: transform 0.3s;
+}
+
+.bn-preview-img:hover {
+  transform: scale(1.0);  
+  transition: transform 0.1s;
 }
 
 .bn-preview-title {  
 
   color: white;
   
-  background: rgba(0,0,0,0.7);
+  background: rgba(20, 68, 108, 0.7);
   border-radius: 5px;
 
   position: absolute; 
-  top: 50%; 
+  
+  top: 5%; 
   left: 10%;
   
   padding: 10px;
