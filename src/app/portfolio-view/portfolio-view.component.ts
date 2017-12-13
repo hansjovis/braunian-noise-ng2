@@ -11,11 +11,16 @@ import { PortfolioItemPreview } from '../portfolio-item-preview'
 export class PortfolioViewComponent implements OnInit {
 
   previews: PortfolioItemPreview[];
+  previewHoveredOver: string;
 
   constructor(private portfolioItemService: PortfolioItemService) { }
 
   ngOnInit() {
     this.getPreviews();
+  }
+  
+  setPreviewHoveredOver(id: string) {
+    this.previewHoveredOver = id;
   }
   
   getPreviews() {
