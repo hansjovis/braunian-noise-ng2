@@ -1,3 +1,26 @@
 <h4 class="pull-right">
-  <small>© Hans-Christiaan Braun, 2017 | <a>Admin Section</a> </small>
+  <small>© Hans-Christiaan Braun, 2017 | <a (click)="loginModal.show()">Admin Section</a> </small>
 </h4>
+
+<app-modal #loginModal>
+    <div class="app-modal-header">
+      Login
+    </div>
+    <div class="app-modal-body">
+    
+      <div class="input-group bn-form-row">
+        <label for="login-name" class="input-group-addon">Username</label>
+        <input type="text" class="form-control" id="username-field" aria-describedby="login-name">        
+      </div>
+      
+      <div class="input-group bn-form-row">
+        <label for="login-password" class="input-group-addon">Password</label>
+        <input type="password" class="form-control" id="password-field" aria-describedby="login-password">        
+      </div>
+      
+    </div>
+    <div class="app-modal-footer">
+      <button type="button" class="btn btn-default" (click)="loginModal.hide()">Close</button>
+      <button type="button" class="btn btn-primary">Login</button>
+    </div>
+</app-modal>

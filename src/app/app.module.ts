@@ -15,6 +15,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { ArticleService } from './article.service';
 import { PortfolioItemService } from './portfolio-item.service';
 import { FooterComponent } from './footer/footer.component';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { FooterComponent } from './footer/footer.component';
     ArticleViewComponent,
     PortfolioViewComponent,
     AboutViewComponent,
-    FooterComponent
+    FooterComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
