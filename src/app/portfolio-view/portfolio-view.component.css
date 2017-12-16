@@ -7,20 +7,26 @@
   position: relative;
 }
 
+.bn-preview-item {
+  margin-bottom: 20px;
+  height: 270px;
+  width: 270px;
+    
+  transform: scale(0.95);
+  transition: transform 0.3s;
+}
+
+.bn-preview-item:hover {
+  transform: scale(1.0);  
+  transition: transform 0.1s;
+}
+
 .bn-preview-img {
   object-fit: cover;
   height: 270px;
   width: 270px;
   
   border-radius: 5px;
-  
-  transform: scale(0.95);
-  transition: transform 0.3s;
-}
-
-.bn-preview-img:hover {
-  transform: scale(1.0);  
-  transition: transform 0.1s;
 }
 
 .bn-preview-title {  
@@ -33,7 +39,7 @@
   position: absolute; 
   
   top: 5%; 
-  left: 10%;
+  left: 5%;
   
   padding: 10px;
 }

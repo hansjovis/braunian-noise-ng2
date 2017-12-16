@@ -10,8 +10,9 @@ import { PortfolioItemPreview } from '../portfolio-item-preview'
 })
 export class PortfolioViewComponent implements OnInit {
 
-  previews: PortfolioItemPreview[];
-  previewHoveredOver: string;
+  previews: PortfolioItemPreview[] ;
+  /** As an item ID. */
+  previewHoveredOver: string ;  
 
   constructor(private portfolioItemService: PortfolioItemService) { }
 
