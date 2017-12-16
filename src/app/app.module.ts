@@ -14,6 +14,7 @@ import { AboutViewComponent } from './about-view/about-view.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { ArticleService } from './article.service';
 import { PortfolioItemService } from './portfolio-item.service';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { PortfolioItemService } from './portfolio-item.service';
     SidebarAuthorComponent,
     ArticleViewComponent,
     PortfolioViewComponent,
-    AboutViewComponent
+    AboutViewComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
