@@ -4,12 +4,14 @@
          on-mouseenter='setPreviewHoveredOver(preview.id)'
          on-mouseleave='setPreviewHoveredOver()'
          class="bn-preview col-sm-6 col-lg-4"> 
-         
-      <img src="{{preview.img_ref}}" class="bn-preview-img" >  
       
-      <h2>
-        <span *ngIf="preview.id === previewHoveredOver" class="bn-preview-title">{{preview.title}}</span>
-      </h2>
+      <div class="center-block bn-preview-item">
+        <img src="{{preview.img_ref}}" class="bn-preview-img">  
+        
+        <h2>
+          <span *ngIf="preview.id === previewHoveredOver" class="bn-preview-title">{{preview.title}}</span>
+        </h2>
+      </div>
       
     </div> 
   </div>
