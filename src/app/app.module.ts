@@ -10,12 +10,16 @@ import { SidebarAuthorComponent } from './sidebar-author/sidebar-author.componen
 import { ArticleViewComponent } from './article-view/article-view.component';
 import { PortfolioViewComponent } from './portfolio-view/portfolio-view.component';
 import { AboutViewComponent } from './about-view/about-view.component';
-
-import { AppRoutingModule } from './/app-routing.module';
-import { ArticleService } from './article.service';
-import { PortfolioItemService } from './portfolio-item.service';
 import { FooterComponent } from './footer/footer.component';
 import { ModalComponent } from './modal/modal.component';
+
+import { AppRoutingModule } from './/app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+
+import { ArticleService } from './article.service';
+import { AuthenticateService } from './authenticate.service';
+import { PortfolioItemService } from './portfolio-item.service';
+
 
 @NgModule({
   declarations: [
@@ -32,9 +36,14 @@ import { ModalComponent } from './modal/modal.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [ArticleService, PortfolioItemService],
+  providers: [
+    ArticleService, 
+    PortfolioItemService, 
+    AuthenticateService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

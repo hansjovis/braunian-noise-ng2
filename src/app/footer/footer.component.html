@@ -11,20 +11,20 @@
       <div class="row bn-form-row">
         <label for="login-name" class="col-lg-3">Username</label>
         <div class="col-lg-9">
-          <input type="text" class="form-control" id="username-field" aria-describedby="login-name"> 
+          <input #username type="text" class="form-control" id="username-field" aria-describedby="login-name"> 
         </div>
       </div>
       
       <div class="row bn-form-row">
         <label for="login-password" class="col-lg-3">Password</label>
         <div class="col-lg-9">
-          <input type="password" class="form-control" id="password-field" aria-describedby="login-password">  
+          <input #password type="password" class="form-control" id="password-field" aria-describedby="login-password">  
         </div>
       </div>
       
     </div>
     <div class="app-modal-footer">
       <button type="button" class="btn btn-default" (click)="loginModal.hide()">Close</button>
-      <button type="button" class="btn btn-primary">Login</button>
+      <button (click)="login(username.value, password.value)" type="button" class="btn btn-primary">Login</button>
     </div>
 </app-modal>
