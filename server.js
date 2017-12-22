@@ -9,7 +9,10 @@ const LocalStrategy = require('passport-local');
 // For encrypting and decrypting strings (e.g. passwords).
 const bcrypt = require('bcrypt-nodejs');
 // Pull information from HTML POST.
-const bodyParser = require('body-parser'); 			
+const bodyParser = require('body-parser');
+
+// Import Mongoose models;
+const User = require('./backend/models/user-model'); 			
 
 // Setup Mongoose.
 const DB_URI = 'mongodb://localhost:27017/braunian-noise';
@@ -82,13 +85,38 @@ app.get('*', function(req, res) {
 	res.sendFile(__dirname + '/dist/index.html'); 
 });
 
+/**
+ *	Transforms the given user into a user profile,
+ *	that can be sent to the browser.
+ */
+var get_profile = function(user) {
+	
+	return {
+		id: user._id,
+		username: user.username,
+		screenname: user.screenname
+	}
+}
+
 // Routes.
 
 // Login route
-app.post('/api/login',	
-	function(req, res) {
-    console.log(req.body);
-  }
+app.post('/api/login',
+  // authenticate using passport.
+	passport.authenticate('local'),	
+  function(req, res) {    
+    if(req.user) {      
+      var user = get_profile(req.user);      
+      
+      console.log(`Braunian Noise: ${user.username} logged in.`);
+            
+      req.session.user = user;     
+      res.json(user);
+    }
+    else {
+      res.status(401).send('Invalid username or password.');
+    }
+  }  
 );
 
 // Start server.

@@ -9,19 +9,16 @@ import { AuthenticateService } from '../authenticate.service';
 })
 export class FooterComponent implements OnInit {
 
-  username: string;
-  password: string;
-
   constructor(private authenticate: AuthenticateService) { }
 
   ngOnInit() {
   }
   
-  public login(username: string, password: string) { 
+  public login(username: string, password: string) {  
 
     this.authenticate.login(username, password)
-      .subscribe(user => {
-        console.log('${user.username} logged in!');
+      .subscribe((user) => {
+        console.log(user, ' logged in!');
       });
   }
 
