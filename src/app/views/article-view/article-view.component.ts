@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ArticleService } from '../article.service';
-import { Article } from '../article'
+import { ArticleService } from '../../services/article-service/article.service';
+import { Article } from '../../model/article'
 
 @Component({
   selector: 'app-article-view',
