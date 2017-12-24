@@ -1,4 +1,4 @@
-import { PortfolioItemPreview } from './portfolio-item-preview';
+import { PortfolioItemPreview } from '../model/portfolio-item-preview';
 
 /**
  *  List of previews of portfolio items, used for testing

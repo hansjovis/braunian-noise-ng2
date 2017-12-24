@@ -1,17 +1,17 @@
 import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { LandingpageComponent } from './landingpage/landingpage.component';
-import { ArticleViewComponent } from './article-view/article-view.component';
-import { AboutViewComponent } from './about-view/about-view.component';
-import { PortfolioViewComponent } from './portfolio-view/portfolio-view.component';
+import { LandingViewComponent } from './views/landing-view/landing-view.component';
+import { ArticleViewComponent } from './views/article-view/article-view.component';
+import { AboutViewComponent } from './views/about-view/about-view.component';
+import { PortfolioViewComponent } from './views/portfolio-view/portfolio-view.component';
 
 const routes: Routes = [
   { path: 'articles', component: ArticleViewComponent },
   { path: 'portfolio', component: PortfolioViewComponent },
   { path: 'about', component: AboutViewComponent },
   
-  { path: '', component: LandingpageComponent },
+  { path: '', component: LandingViewComponent },
   
 ];
 
