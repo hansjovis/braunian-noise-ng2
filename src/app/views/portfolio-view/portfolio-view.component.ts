@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { PortfolioItemService } from '../portfolio-item.service';
-import { PortfolioItemPreview } from '../portfolio-item-preview'
+import { PortfolioItemService } from '../../services/portfolio-item-service/portfolio-item.service';
+import { PortfolioItemPreview } from '../../model/portfolio-item-preview'
 
 @Component({
   selector: 'app-portfolio-view',

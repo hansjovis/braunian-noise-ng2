@@ -4,26 +4,26 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { LandingpageComponent } from './landingpage/landingpage.component';
+
+import { LandingViewComponent } from './views/landing-view/landing-view.component';
+import { ArticleViewComponent } from './views/article-view/article-view.component';
+import { PortfolioViewComponent } from './views/portfolio-view/portfolio-view.component';
+import { AboutViewComponent } from './views/about-view/about-view.component';
+
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { SidebarAuthorComponent } from './sidebar-author/sidebar-author.component';
-import { ArticleViewComponent } from './article-view/article-view.component';
-import { PortfolioViewComponent } from './portfolio-view/portfolio-view.component';
-import { AboutViewComponent } from './about-view/about-view.component';
 
 import { AppRoutingModule } from './/app-routing.module';
-import { ArticleService } from './article.service';
-import { PortfolioItemService } from './portfolio-item.service';
+import { ArticleService } from './services/article-service/article.service';
+import { PortfolioItemService } from './services/portfolio-item-service/portfolio-item.service';
 import { FooterComponent } from './footer/footer.component';
-import { ModalComponent } from './modal/modal.component';
+import { ModalComponent } from './helper/modal/modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    LandingpageComponent,
+    LandingViewComponent,
     SidebarComponent,
-    SidebarAuthorComponent,
     ArticleViewComponent,
     PortfolioViewComponent,
     AboutViewComponent,
