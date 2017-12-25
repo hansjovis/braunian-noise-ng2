@@ -81,3 +81,33 @@ body {
   }
 }
 
+/* Braunian Noise specific */
+
+.bn-sidebar {
+  margin-bottom: 40px;
+}
+
+.bn-panel {
+  border: 1px solid;
+  border-color: #1f69a7; /* BN Blue (tm) */
+  border-radius: 5px;
+}
+
+.bn-panel .bn-panel-section {
+  width: 100%;
+}
+
+.bn-panel-section .bn-panel-header {
+  background-color: #1f69a7;
+  padding: 5px;
+  padding-left: 15px;
+  /* Text. */
+  color: white;  
+  line-height: 30px;
+  font-size: 20px;  
+}
+
+.bn-panel-section .bn-panel-content {
+  margin: 5px;
+}
+
