@@ -22,4 +22,12 @@ export class ArticleViewComponent implements OnInit {
     this.categoryService.getCategories()
       .subscribe(categories => this.categories = categories);
   }
+  
+  toggleCategory(id: string): void {
+    this.categories.forEach(cat => {
+      if(cat.id === id) {
+        cat.active = cat.active? false : true ;
+      }
+    });
+  }
 }

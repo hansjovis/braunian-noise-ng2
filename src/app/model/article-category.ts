@@ -7,5 +7,4 @@ export class ArticleCategory {
   icon: string; // As Font Awesome icon class.
   title: string;
   description: string;
-  active: boolean;
 }

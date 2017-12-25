@@ -10,7 +10,7 @@
           <ul class="bn-category-list">
             <li *ngFor="let category of categories" class="bn-category">
               
-              <a class="bn-category-button" href="">              
+              <a class="bn-category-button" (click)="toggleCategory(category.id)">              
                 <span *ngIf="!category.active" class="fa fa-square-o bn-category-checkbox"></span>
                 <span *ngIf="category.active" class="fa fa-check-square-o bn-category-checkbox"></span>                
                 <span class="fa {{category.icon}}"></span> 
@@ -24,6 +24,7 @@
       </div>
     </div>    
   </div>
+  <!-- List of articles. -->
   <div class="col-md-9">
     <app-article-list></app-article-list>
   </div>
