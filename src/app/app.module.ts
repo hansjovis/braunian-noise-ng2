@@ -16,12 +16,15 @@ import { PortfolioViewComponent } from './views/portfolio-view/portfolio-view.co
 
 import { AboutViewComponent } from './views/about-view/about-view.component';
 
-
 import { ModalComponent } from './helper/modal/modal.component';
+
+import { ArticleCategoryService } from './services/article-category-service/article-category.service';
+
+import { HttpClientModule } from '@angular/common/http';
 
 import { ArticleService } from './services/article-service/article.service';
 import { PortfolioItemService } from './services/portfolio-item-service/portfolio-item.service';
-import { ArticleCategoryService } from './services/article-category-service/article-category.service';
+import { AuthenticateService } from './services/authenticate-service/authenticate.service';
 
 @NgModule({
   declarations: [
@@ -37,9 +40,15 @@ import { ArticleCategoryService } from './services/article-category-service/arti
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [ArticleService, PortfolioItemService, ArticleCategoryService],
+  providers: [
+    ArticleService, 
+    PortfolioItemService, 
+    AuthenticateService,
+    ArticleCategoryService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
