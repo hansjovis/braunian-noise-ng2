@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ArticleService } from '../../services/article-service/article.service';
-import { Article } from '../../model/article'
+import { ArticleCategory } from '../../model/article-category'; 
+import { ArticleCategoryService } from '../../services/article-category-service/article-category.service';
 
 @Component({
   selector: 'app-article-view',
@@ -10,17 +10,30 @@ import { Article } from '../../model/article'
 })
 export class ArticleViewComponent implements OnInit {
 
-  articles: Article[];
+  categories: ArticleCategory[];
+  activeCategories: string[];
 
-  constructor(private articleService: ArticleService) { }
+  constructor(private categoryService: ArticleCategoryService) { }
 
   ngOnInit() {
-    this.getArticles();
+    this.getCategories();
   }
 
-  getArticles(): void {
-    this.articleService.getArticles()
-        .subscribe(articles => this.articles = articles);
+  getCategories(): void {
+    this.categoryService.getCategories()
+      .subscribe(categories => this.categories = categories);
   }
   
+  toggleCategory(id: string): void { 
+  
+    this.categories.forEach(cat => {
+      if(cat.id === id) {
+        cat.active = cat.active? false : true ;
+      }
+    });    
+    
+    this.activeCategories = this.categories
+      .filter(cat => cat.active)
+      .map(cat => cat.id);
+  }
 }

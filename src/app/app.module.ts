@@ -1,40 +1,45 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { AppRoutingModule } from './/app-routing.module';
 
 import { AppComponent } from './app.component';
+
 import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 import { LandingViewComponent } from './views/landing-view/landing-view.component';
+
 import { ArticleViewComponent } from './views/article-view/article-view.component';
+import { ArticleListComponent } from './views/article-view/article-list/article-list.component';
+
 import { PortfolioViewComponent } from './views/portfolio-view/portfolio-view.component';
+
 import { AboutViewComponent } from './views/about-view/about-view.component';
 
-import { SidebarComponent } from './sidebar/sidebar.component';
 
-import { AppRoutingModule } from './/app-routing.module';
+import { ModalComponent } from './helper/modal/modal.component';
+
 import { ArticleService } from './services/article-service/article.service';
 import { PortfolioItemService } from './services/portfolio-item-service/portfolio-item.service';
-import { FooterComponent } from './footer/footer.component';
-import { ModalComponent } from './helper/modal/modal.component';
+import { ArticleCategoryService } from './services/article-category-service/article-category.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     LandingViewComponent,
-    SidebarComponent,
     ArticleViewComponent,
     PortfolioViewComponent,
     AboutViewComponent,
     FooterComponent,
-    ModalComponent
+    ModalComponent,
+    ArticleListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [ArticleService, PortfolioItemService],
+  providers: [ArticleService, PortfolioItemService, ArticleCategoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
