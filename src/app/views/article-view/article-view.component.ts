@@ -11,6 +11,7 @@ import { ArticleCategoryService } from '../../services/article-category-service/
 export class ArticleViewComponent implements OnInit {
 
   categories: ArticleCategory[];
+  activeCategories: string[];
 
   constructor(private categoryService: ArticleCategoryService) { }
 
@@ -23,11 +24,16 @@ export class ArticleViewComponent implements OnInit {
       .subscribe(categories => this.categories = categories);
   }
   
-  toggleCategory(id: string): void {
+  toggleCategory(id: string): void { 
+  
     this.categories.forEach(cat => {
       if(cat.id === id) {
         cat.active = cat.active? false : true ;
       }
-    });
+    });    
+    
+    this.activeCategories = this.categories
+      .filter(cat => cat.active)
+      .map(cat => cat.id);
   }
 }

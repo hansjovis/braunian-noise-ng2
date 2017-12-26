@@ -10,7 +10,8 @@ export const MOCK_ARTICLES: Article[] = [
       'Vestibulum eu lobortis risus. Vestibulum ante ipsum primis in faucibus orci luctus' +
       ' et ultrices posuere cubilia Curae; Nunc pulvinar velit nec suscipit tincidunt.',
     author: 'Hans-Christiaan Braun',
-    date: 1512936509695
+    date: 1512936509695 ,
+    categories: ['1', '2']
   },
   {
     id: '2',
@@ -21,7 +22,8 @@ export const MOCK_ARTICLES: Article[] = [
       'Vestibulum eu lobortis risus. Vestibulum ante ipsum primis in faucibus orci luctus' +
       ' et ultrices posuere cubilia Curae; Nunc pulvinar velit nec suscipit tincidunt.',
     author: 'Hans-Christiaan Braun',
-    date: 1512936509695
+    date: 1512936509695 ,
+    categories: ['1']
   },
   {
     id: '3',
@@ -32,6 +34,7 @@ export const MOCK_ARTICLES: Article[] = [
       'Vestibulum eu lobortis risus. Vestibulum ante ipsum primis in faucibus orci luctus' +
       ' et ultrices posuere cubilia Curae; Nunc pulvinar velit nec suscipit tincidunt.',
     author: 'Hans-Christiaan Braun',
-    date: 1512936509695
+    date: 1512936509695 ,
+    categories: ['2']
   }
 ];  

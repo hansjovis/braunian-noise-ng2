@@ -9,4 +9,5 @@ export class Article {
   description: string;
   author: string;
   date: number; // In milliseconds.
+  categories: array;
 }

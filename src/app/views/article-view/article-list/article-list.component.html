@@ -1,6 +1,6 @@
 <div>
   <div *ngFor="let article of articles">
-    <div class="row bn-article-preview">
+    <div *ngIf="articleHasCategories(article, activeCategories)" class="row bn-article-preview">
       <img class="bn-preview-img hidden-xs col-sm-4" src="{{article.img_ref}}">
       <div class="col-sm-8">
       
@@ -17,6 +17,6 @@
           <small style="margin-left: 20px;"> Posted on {{article.date | date:'yyyy-MM-dd'}} by {{article.author}}</small> 					
         </h4>        
       </div>
-    </div>
+    </div>    
   </div>
 </div>
