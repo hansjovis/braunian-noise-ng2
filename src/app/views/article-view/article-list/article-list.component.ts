@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import { ArticleService } from '../../../services/article-service/article.service';
 import { Article } from '../../../model/article';
-import { ArticleCategory } '../../../model/article-category';
 
 @Component({
   selector: 'app-article-list',
@@ -21,7 +20,7 @@ export class ArticleListComponent implements OnInit {
     this.getArticles();
   }
   
-  articleHasCategories(article: Article, categories: string) {
+  articleHasCategories(article: Article, categories: string[]) {
     return categories.every(cat => article.categories.includes(cat));
   }
 
