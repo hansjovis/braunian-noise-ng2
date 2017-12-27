@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ArticleCategory } from '../../model/article-category'; 
 import { ArticleCategoryService } from '../../services/article-category-service/article-category.service';
 import { AuthenticateService } from '../../services/authenticate-service/authenticate.service';
+import { User } from '../../model/user'; 
 
 @Component({
   selector: 'app-article-view',
@@ -13,7 +14,6 @@ export class ArticleViewComponent implements OnInit {
 
   categories: ArticleCategory[];
   activeCategories: string[];
-  loggedIn: boolean;
 
   constructor(private categoryService: ArticleCategoryService,
               private authenticateService: AuthenticateService) { }
@@ -30,6 +30,10 @@ export class ArticleViewComponent implements OnInit {
   isLoggedIn(): boolean {
     return this.authenticateService.userLoggedIn();  
   }
+  
+  getLoggedInUser(): User {
+    return this.authenticateService.getLoggedInUser();
+  } 
   
   toggleCategory(id: string): void { 
   

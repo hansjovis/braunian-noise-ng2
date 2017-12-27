@@ -15,7 +15,24 @@
         <!-- Footer (like-button, author, date posted etc.). -->
         <h4 class="pull-right"> 
           <small style="margin-left: 20px;"> Posted on {{article.date | date:'yyyy-MM-dd'}} by {{article.author}}</small> 					
-        </h4>        
+        </h4>   
+
+        <!-- Admin buttons, only shown when an admin has logged in. -->
+        <div *ngIf="isLoggedIn()" class="btn-group pull-left">
+          <!-- Edit post. -->
+          <a class="btn btn-default">
+            <span class="fa fa-edit"></span>
+          </a>
+          <!-- Hide / show post. -->
+          <a class="btn btn-default">
+            <span class="fa fa-eye-slash"></span>
+          </a>
+          <!-- Delete post. -->
+          <a class="btn btn-default">
+            <span class="fa fa-trash-o"></span>
+          </a>
+        </div>
+        
       </div>
     </div>    
   </div>
