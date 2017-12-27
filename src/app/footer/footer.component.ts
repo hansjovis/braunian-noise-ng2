@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { AuthenticateService } from '../services/authenticate-service/authenticate.service';
+import { ModalComponent } from '../helper/modal/modal.component';
 
 @Component({
   selector: 'app-footer',
@@ -8,6 +9,8 @@ import { AuthenticateService } from '../services/authenticate-service/authentica
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit {
+
+  @ViewChild( ModalComponent ) loginModal: ModalComponent;
 
   constructor(private authenticate: AuthenticateService) { }
 
@@ -19,6 +22,7 @@ export class FooterComponent implements OnInit {
     this.authenticate.login(username, password)
       .subscribe((user) => {
         console.log(user, ' logged in!');
+        this.loginModal.hide();
       });
   }
 
