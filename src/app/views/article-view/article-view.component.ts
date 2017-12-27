@@ -37,11 +37,8 @@ export class ArticleViewComponent implements OnInit {
   
   toggleCategory(id: string): void { 
   
-    this.categories.forEach(cat => {
-      if(cat.id === id) {
-        cat.active = cat.active? false : true ;
-      }
-    });    
+    var catToToggle = this.categories.find(cat => cat.id === id);
+    catToToggle.active = catToToggle.active? false : true ;   
     
     this.activeCategories = this.categories
       .filter(cat => cat.active)
