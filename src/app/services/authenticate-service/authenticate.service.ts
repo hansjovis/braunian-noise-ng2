@@ -25,10 +25,7 @@ export class AuthenticateService {
    */
   public login(username: string, password: string): Observable<User> {
     return this.http.post<User>(this.loginRoute, {username: username, password: password}, httpOptions)
-      .pipe(
-        tap(user => localStorage.setItem('bn-user', JSON.stringify(user))), // Store user in the browser's local storage. 
-        catchError(this.handleError<User>('login'))
-      );
+      .pipe(tap(user => localStorage.setItem('bn-user', JSON.stringify(user)))); // Store user in the browser's local storage.       
   }
   
   public logOut(): void {
@@ -55,15 +52,5 @@ export class AuthenticateService {
    */
   public userLoggedIn(): boolean {
     return localStorage.getItem('bn-user') != undefined;  
-  }
-  
-  private handleError<T>(operation = 'operation', result?: T) {
-    // Return error-handling function.
-    return (error: any): Observable<T> => {   
-      console.error(error);
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };  
-  }
-  
+  }   
 }
