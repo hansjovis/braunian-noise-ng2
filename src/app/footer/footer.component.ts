@@ -11,6 +11,7 @@ import { ModalComponent } from '../helper/modal/modal.component';
 export class FooterComponent implements OnInit {
 
   @ViewChild( ModalComponent ) loginModal: ModalComponent;
+  error: string;
 
   constructor(private authenticate: AuthenticateService) { }
 
@@ -23,6 +24,12 @@ export class FooterComponent implements OnInit {
       .subscribe((user) => {
         console.log(user, ' logged in!');
         this.loginModal.hide();
+      },
+      (error) => {
+        switch(error.status) {
+          case 401: this.error = 'Wrong user name or password.'; break ;
+          default: this.error = `${error.status} - ${error.statusText}`;
+        }
       });
   }
 
