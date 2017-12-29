@@ -4,7 +4,7 @@
     <h3> Welcome {{ getLoggedInUser().screenname }} 
       <div class="pull-right">
         <a class="btn btn-primary">Add Article</a>
-        <a class="btn btn-danger">Log Out</a>
+        <a (click)="logOut()" class="btn btn-danger">Log Out</a>
       </div>    
     </h3>    
   </div>  

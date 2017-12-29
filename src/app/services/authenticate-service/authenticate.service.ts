@@ -16,6 +16,7 @@ export class AuthenticateService {
 
   private api = 'api/';  
   private loginRoute = this.api + 'login';
+  private logoutRoute = this.api + 'logout';
     
   constructor(private http: HttpClient) { }
 
@@ -29,12 +30,24 @@ export class AuthenticateService {
         catchError(this.handleError<User>('login'))
       );
   }
+  
+  public logOut(): void {
+    this.http.get(this.logoutRoute, { responseType: 'text' })
+      .subscribe(
+        response => { localStorage.removeItem('bn-user') }); 
+  }
 
   /**
    *  Gets the user that is currently logged in.
    */
   public getLoggedInUser(): User {
-    return JSON.parse(localStorage.getItem('bn-user'));
+    var user = localStorage.getItem('bn-user');
+    if(user) {
+      return JSON.parse(user);
+    }
+    else {
+      throw new Error('No user has been logged in!');
+    }
   }
   
   /**

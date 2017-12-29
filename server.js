@@ -119,6 +119,13 @@ app.post('/api/login',
   }  
 );
 
+// logout route
+app.get('/api/logout', function(req, res) {
+  console.log(`Braunian Noise: User logged out.`);
+	req.logout();  
+	res.status(200).send('Successfully logged out!');
+});
+
 // Start server.
 app.listen(8080);
 console.log("Braunian Noise: Ready to Rumble! - Listening on port 8080.");
