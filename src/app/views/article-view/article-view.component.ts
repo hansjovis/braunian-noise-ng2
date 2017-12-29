@@ -27,6 +27,10 @@ export class ArticleViewComponent implements OnInit {
       .subscribe(categories => this.categories = categories);
   }
   
+  logOut(): void {  
+    this.authenticateService.logOut();
+  }
+  
   isLoggedIn(): boolean {
     return this.authenticateService.userLoggedIn();  
   }
