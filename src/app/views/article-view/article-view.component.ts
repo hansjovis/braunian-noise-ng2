@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { ArticleCategory } from '../../model/article-category'; 
+import { User } from '../../model/user'; 
+
 import { ArticleCategoryService } from '../../services/article-category-service/article-category.service';
 import { AuthenticateService } from '../../services/authenticate-service/authenticate.service';
-import { User } from '../../model/user'; 
+
+import { ArticleEditCatDialogComponent } from './article-edit-cat-dialog/article-edit-cat-dialog.component';
 
 @Component({
   selector: 'app-article-view',
@@ -12,8 +15,12 @@ import { User } from '../../model/user';
 })
 export class ArticleViewComponent implements OnInit {
 
+  @ViewChild( ArticleEditCatDialogComponent ) editCatDialog: ArticleEditCatDialogComponent;
+
   categories: ArticleCategory[];
   activeCategories: string[];
+  
+  categoryToEdit: string;
 
   constructor(private categoryService: ArticleCategoryService,
               private authenticateService: AuthenticateService) { }
@@ -50,5 +57,16 @@ export class ArticleViewComponent implements OnInit {
     this.activeCategories = this.categories
       .filter(cat => cat.active)
       .map(cat => cat.id);
+  }
+  
+  editCategory(id?: string): void {
+  
+    if(id != undefined) {
+      var selectedCat = this.categories.filter(cat => cat.id === id)[0];  
+      this.editCatDialog.show(selectedCat);
+    }
+    else {
+      this.editCatDialog.show();
+    }    
   }
 }
