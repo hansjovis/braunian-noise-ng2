@@ -25,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ArticleService } from './services/article-service/article.service';
 import { PortfolioItemService } from './services/portfolio-item-service/portfolio-item.service';
 import { AuthenticateService } from './services/authenticate-service/authenticate.service';
+import { ArticleEditCatDialogComponent } from './views/article-view/article-edit-cat-dialog/article-edit-cat-dialog.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { AuthenticateService } from './services/authenticate-service/authenticat
     AboutViewComponent,
     FooterComponent,
     ModalComponent,
-    ArticleListComponent
+    ArticleListComponent,
+    ArticleEditCatDialogComponent
   ],
   imports: [
     BrowserModule,
