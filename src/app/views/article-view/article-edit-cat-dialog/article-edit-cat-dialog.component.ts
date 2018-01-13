@@ -10,39 +10,35 @@ import { ModalComponent } from '../../../helper/modal/modal.component';
   styleUrls: ['./article-edit-cat-dialog.component.css']
 })
 export class ArticleEditCatDialogComponent implements OnInit {
+ 
 
   @ViewChild( ModalComponent ) editCategoryModal: ModalComponent;
-  @ViewChild( 'title' ) title: ElementRef;
-  @ViewChild( 'description' ) description: ElementRef;
-  @ViewChild( 'icon' ) icon: ElementRef;
 
-  selectedCategory: ArticleCategory;
-
-  selectedIcon: string;
+  category: ArticleCategory;
   
   constructor() { }
 
   ngOnInit() {
-    this.selectedCategory = new ArticleCategory();
+    this.category = new ArticleCategory();
   }
-  
-  /**
-   * Event listener triggered whenever the icon text field is changed.
-   * @param event the onchange event that has been triggered by the icon text field.
-   */
-  onIconChange() {
     
-  }
-  
   show(category?: ArticleCategory): void {
+
+    if(category) {
+      // Clone category.
+      this.category = {
+        id: category.id,
+        title: category.title,
+        description: category.description,
+        icon: category.icon,
+        active: category.active
+      }
+    }
+    else {
+      // Make a new category.
+      this.category = new ArticleCategory();
+    }
   
-    this.selectedCategory = category;
-  
-    // Pre-populate the fields, if category exists.
-    this.title.nativeElement.value = category? category.title : "";
-    this.description.nativeElement.value = category? category.description : "";
-    this.icon.nativeElement.value = category? category.icon : "";
-    
     this.editCategoryModal.show();
   }
 

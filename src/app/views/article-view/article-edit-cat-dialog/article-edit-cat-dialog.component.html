@@ -1,38 +1,40 @@
 <app-modal #editCategoryModal>
   <div class="app-modal-header">
-    Category
+    Edit / Add Category
   </div>
-  <div class="app-modal-body">
+    <div class="app-modal-body">
     
-    <div *ngIf="error != null" class="alert alert-danger">
-      {{error}}
-    </div>
-    
-    <div class="row bn-form-row">
-      <label for="title" class="col-lg-3">Title</label>
-      <div class="col-lg-9">
-        <input #title type="text" class="form-control" id="title-field" aria-describedby="title"> 
+      <div *ngIf="error != null" class="alert alert-danger">
+        {{error}}
       </div>
-    </div>  
+      
+      <div class="row bn-form-row">
+        <label for="title" class="col-lg-3">Title</label>
+        <div class="col-lg-9">
+          <input [(ngModel)]="category.title" name="title" type="text" class="form-control" id="title-field" aria-describedby="title"> 
+        </div>
+      </div>  
 
-    <div class="row bn-form-row">
-      <label for="title" class="col-lg-3">Icon</label>
-      <div class="col-lg-8">
-        <input #icon type="text" [(ngModel)]="selectedIcon" class="form-control" id="icon-field" aria-describedby="title">        
+      <div class="row bn-form-row">
+        <label for="title" class="col-md-3">Icon</label>
+        <div class="col-md-6">
+          <input [(ngModel)]="category.icon" name="icon" type="text" [(ngModel)]="selectedIcon" class="form-control" id="icon-field" aria-describedby="title">        
+        </div>
+        <div class="col-md-3">
+          <span class="fa fa-{{category.icon}}"></span>
+        </div>
       </div>
-      <span class="fa fa-{{selectedIcon}}"></span>
+      
+      <div class="row bn-form-row">
+        <label for="title" class="col-lg-3">Description</label>
+        <div class="col-lg-9">
+          <input [(ngModel)]="category.description" name="description" type="text" class="form-control" id="description-field" aria-describedby="title"> 
+        </div>
+      </div> 
+      
     </div>
-    
-    <div class="row bn-form-row">
-      <label for="title" class="col-lg-3">Description</label>
-      <div class="col-lg-9">
-        <input #description type="text" class="form-control" id="description-field" aria-describedby="title"> 
-      </div>
-    </div> 
-    
-  </div>
-  <div class="app-modal-footer">
-    <button type="button" class="btn btn-default" (click)="editCategoryModal.hide()">Cancel</button>
-    <button type="button" class="btn btn-primary">Save</button>
-  </div>
+    <div class="app-modal-footer">
+      <button type="button" class="btn btn-default" (click)="editCategoryModal.hide()">Cancel</button>
+      <button type="button" class="btn btn-primary">Save</button>
+    </div>
 </app-modal>  
