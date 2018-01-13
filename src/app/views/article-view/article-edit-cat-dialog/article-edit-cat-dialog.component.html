@@ -16,6 +16,14 @@
     </div>  
 
     <div class="row bn-form-row">
+      <label for="title" class="col-lg-3">Icon</label>
+      <div class="col-lg-8">
+        <input #icon type="text" [(ngModel)]="selectedIcon" class="form-control" id="icon-field" aria-describedby="title">        
+      </div>
+      <span class="fa fa-{{selectedIcon}}"></span>
+    </div>
+    
+    <div class="row bn-form-row">
       <label for="title" class="col-lg-3">Description</label>
       <div class="col-lg-9">
         <input #description type="text" class="form-control" id="description-field" aria-describedby="title"> 
@@ -25,6 +33,6 @@
   </div>
   <div class="app-modal-footer">
     <button type="button" class="btn btn-default" (click)="editCategoryModal.hide()">Cancel</button>
-    <button (click)="console.log('edit category!')" type="button" class="btn btn-primary">Save</button>
+    <button type="button" class="btn btn-primary">Save</button>
   </div>
 </app-modal>  
