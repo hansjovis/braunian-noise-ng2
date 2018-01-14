@@ -3,35 +3,41 @@
     Edit / Add Category
   </div>
     <div class="app-modal-body">
-    
-      <div *ngIf="error != null" class="alert alert-danger">
-        {{error}}
-      </div>
-      
-      <div class="row bn-form-row">
-        <label for="title" class="col-lg-3">Title</label>
-        <div class="col-lg-9">
-          <input [(ngModel)]="category.title" name="title" type="text" class="form-control" id="title-field" aria-describedby="title"> 
-        </div>
-      </div>  
+      <form #categoryForm="ngForm">
 
-      <div class="row bn-form-row">
-        <label for="title" class="col-md-3">Icon</label>
-        <div class="col-md-6">
-          <input [(ngModel)]="category.icon" name="icon" type="text" [(ngModel)]="selectedIcon" class="form-control" id="icon-field" aria-describedby="title">        
+        <div class="row bn-form-row">
+          <label for="title" class="col-lg-3">Title</label>
+          <div class="col-lg-9">
+            <input [(ngModel)]="category.title" name="title" required  #title="ngModel"
+                    type="text" class="form-control" id="title" aria-describedby="title"> 
+            <div [hidden]="title.valid || title.pristine" class="bn-form-alert">
+              Title is required.
+            </div> 
+          </div>
         </div>
-        <div class="col-md-3">
-          <span class="fa fa-{{category.icon}}"></span>
+         
+
+        <div class="row bn-form-row">
+          <label for="title" class="col-md-3">Icon</label>
+          <div class="col-md-6">
+            <input [(ngModel)]="category.icon" name="icon" required #icon="ngModel" 
+                    type="text"  class="form-control" id="icon" aria-describedby="title">
+            <div [hidden]="icon.valid || icon.pristine" class="bn-form-alert">
+              Icon is required and should be a valid <a href="http://fontawesome.io/icons/">FontAwesom icon name</a>.
+            </div>         
+          </div>
+          <div class="col-md-3">
+            <span class="fa fa-{{category.icon}}"></span>
+          </div>
         </div>
-      </div>
-      
-      <div class="row bn-form-row">
-        <label for="title" class="col-lg-3">Description</label>
-        <div class="col-lg-9">
-          <input [(ngModel)]="category.description" name="description" type="text" class="form-control" id="description-field" aria-describedby="title"> 
-        </div>
-      </div> 
-      
+        
+        <div class="row bn-form-row">
+          <label for="title" class="col-lg-3">Description</label>
+          <div class="col-lg-9">
+            <input [(ngModel)]="category.description" name="description" type="text" class="form-control" id="description" aria-describedby="title"> 
+          </div>
+        </div> 
+      </form>
     </div>
     <div class="app-modal-footer">
       <button type="button" class="btn btn-default" (click)="editCategoryModal.hide()">Cancel</button>

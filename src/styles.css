@@ -114,3 +114,20 @@ body {
 .bn-form-row {
   margin-top: 10px;
 }
+
+/* Form validation (with Angular forms) */
+
+.ng-invalid:not(form)  {
+  border: 2px solid #aa6564;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.bn-form-alert {
+  background-color: #aa6564;
+  color: white;
+
+  border-radius: 0px 0px 5px 5px;
+  margin-bottom: 5px;
+  padding: 5px;
+}
