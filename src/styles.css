@@ -131,3 +131,12 @@ body {
   margin-bottom: 5px;
   padding: 5px;
 }
+
+.bn-form-alert a {
+  color: white;
+  text-decoration: underline;
+}
+
+.bn-form-alert a:hover {
+  color: rgb(209, 133, 133);
+}
