@@ -3,6 +3,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ArticleCategory } from '../../../model/article-category'; 
 
 import { ModalComponent } from '../../../helper/modal/modal.component';
+import { createTemplateData } from '@angular/core/src/view/refs';
 
 @Component({
   selector: 'app-article-edit-cat-dialog',
@@ -24,20 +25,7 @@ export class ArticleEditCatDialogComponent implements OnInit {
     
   show(category?: ArticleCategory): void {
 
-    if(category) {
-      // Clone category.
-      this.category = {
-        id: category.id,
-        title: category.title,
-        description: category.description,
-        icon: category.icon,
-        active: category.active
-      }
-    }
-    else {
-      // Make a new category.
-      this.category = new ArticleCategory();
-    }
+    this.category = category? category.clone() : new ArticleCategory();
   
     this.editCategoryModal.show();
   }
