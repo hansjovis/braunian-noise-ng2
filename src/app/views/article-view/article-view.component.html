@@ -21,7 +21,7 @@
               <li *ngFor="let category of categories" class="bn-category">
                 <div class="bn-category-container">
                   <!-- Category. -->
-                  <a class="bn-category-button" (click)="toggleCategory(category.id)">  
+                  <a class="bn-category-button" (click)="toggleCategory(category._id)">  
                     <!-- Check box. -->
                     <span *ngIf="!category.active" class="fa fa-square-o bn-category-checkbox"></span>
                     <span *ngIf="category.active" class="fa fa-check-square-o bn-category-checkbox"></span> 
@@ -31,7 +31,7 @@
                     {{category.title}} 
                   </a>
                   <!-- Edit button. -->
-                  <a *ngIf="isLoggedIn()" (click)="editCategory(category.id)" class="fa fa-edit pull-right"></a>
+                  <a *ngIf="isLoggedIn()" (click)="editCategory(category._id)" class="fa fa-edit pull-right"></a>
                 </div>
               </li>
             </ul>

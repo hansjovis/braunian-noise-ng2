@@ -49,20 +49,20 @@ export class ArticleViewComponent implements OnInit {
   toggleCategory(id: string): void { 
   
     this.categories.forEach(cat => {
-      if(cat.id === id) {
+      if(cat._id === id) {
         cat.active = cat.active? false : true ;
       }
     });    
     
     this.activeCategories = this.categories
       .filter(cat => cat.active)
-      .map(cat => cat.id);
+      .map(cat => cat._id);
   }
   
   editCategory(id?: string): void {
-  
+
     if(id != undefined) {
-      var selectedCat = this.categories.filter(cat => cat.id === id)[0];  
+      var selectedCat = this.categories.filter(cat => cat._id === id)[0];  
       this.editCatDialog.show(selectedCat);
     }
     else {

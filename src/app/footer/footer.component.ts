@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { AuthenticateService } from '../services/authenticate-service/authenticate.service';
 import { ModalComponent } from '../helper/modal/modal.component';
+import { error } from 'selenium-webdriver';
 
 @Component({
   selector: 'app-footer',
@@ -23,6 +24,7 @@ export class FooterComponent implements OnInit {
     this.authenticate.login(username, password)
       .subscribe((user) => {
         console.log(user, ' logged in!');
+        this.error = null;
         this.loginModal.hide();
       },
       (error) => {
