@@ -11,8 +11,11 @@ const bcrypt = require('bcrypt-nodejs');
 // Pull information from HTML POST.
 const bodyParser = require('body-parser');
 
+var session = require('express-session');
+
 // Import Mongoose models;
-const User = require('./backend/models/user-model'); 			
+const User = require('./backend/models/user-model'); 		
+const ArticleCategory = require('./backend/models/article-category-model'); 	
 
 // Setup Mongoose.
 const DB_URI = 'mongodb://localhost:27017/braunian-noise';
@@ -30,13 +33,15 @@ db_connection.then((db) => {
 
 // Setup Passport.
 passport.serializeUser(function(user, done) {
-	done(null, user.id);
+	console.log(user._id);
+	done(null, user._id);
 });
 
 passport.deserializeUser(function(id, done) {
+	console.log(id);
 	User.findById(id, function(err, user) {
-		done(err, user);
-	});
+        done(err, user);
+    });
 });
 
 passport.use(new LocalStrategy(
@@ -71,6 +76,14 @@ passport.use(new LocalStrategy(
 // Setup Express.
 const app = express();
 app.use(express.static(__dirname + '/dist'));
+app.use(session({
+	secret: 'display panther', 
+	resave: false,
+  	saveUninitialized: true,
+	cookie: { 
+		maxAge: 60000 
+	}
+}));
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -100,17 +113,18 @@ var get_profile = function(user) {
 
 // Routes.
 
-// Login route
+// Login route.
 app.post('/api/login',
   // authenticate using passport.
-	passport.authenticate('local'),	
+  passport.authenticate('local'),	
   function(req, res) {    
-    if(req.user) {      
+    if(req.user) {   
+
+	  req.session.user = req.user;
       var user = get_profile(req.user);      
       
       console.log(`Braunian Noise: ${user.username} logged in.`);
-            
-      req.session.user = user;     
+               
       res.json(user);
     }
     else {
@@ -119,11 +133,55 @@ app.post('/api/login',
   }  
 );
 
-// logout route
-app.get('/api/logout', function(req, res) {
-  console.log(`Braunian Noise: User logged out.`);
+// Route middleware function that checks whether the user has logged in.
+var is_logged_in = function(req, res, next) {
+	
+	if(req.isAuthenticated()) {
+		return next();
+	}
+	else {
+		res.status(401).send('You need to be logged in.');
+	}
+}
+
+// Logout route.
+app.post('/api/logout', function(req, res) {
+  	console.log(`Braunian Noise: User logged out.`);
 	req.logout();  
-	res.status(200).send('Successfully logged out!');
+	res.status(200).send({text: 'Successfully logged out!'});
+});
+
+// Save category route.
+app.post('/api/article_category/save', 
+	is_logged_in,
+	function(req, res){
+
+		var category = req.body;
+
+		// Check if the category already exists.
+		ArticleCategory.findById(category.id,
+			function(err, found_category) {
+				if(err) {
+					console.log(err);
+
+					res.status(400).send({message: 'An error occured.'});
+				}				
+
+				if(found_category) {
+					// Save over existing category.
+					found_category = category;
+					found_category.save();
+					
+					res.status(200).send({message: 'Article category succesfuly updated.'});
+				}
+				else{
+					// Save new category.
+					let new_category = new ArticleCategory(category);
+					new_category.save();
+
+					res.status(201).send({message: 'Article category succesfuly added.'});
+				}
+		});
 });
 
 // Start server.
