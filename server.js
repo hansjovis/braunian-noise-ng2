@@ -76,7 +76,6 @@ passport.use(new LocalStrategy(
 
 // Setup Express.
 const app = express();
-
 app.use(session({
 	secret: 'display panther', 
 	resave: false,
@@ -92,9 +91,6 @@ app.use(passport.session());
 app.use(bodyParser.urlencoded({extended:'true', limit: '50mb'}));            	// parse application/x-www-form-urlencoded
 app.use(bodyParser.json({limit: '50mb'}));                                     // parse application/json
 app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
-
-// Main entry point.
-app.use(express.static(path.join(__dirname, '/dist')));
 
 /**
  *	Transforms the given user into a user profile,
@@ -195,6 +191,12 @@ app.get('/api/article_category',
 		});
 	}
 )
+
+// Main entry point for serving the Angular app.
+app.use(express.static(path.join(__dirname, 'dist')));
+app.get('/*', (req, res) => {
+	res.sendFile('index.html', {root: path.join(__dirname, 'dist')});
+});
 
 // Start server.
 app.listen(8080);
