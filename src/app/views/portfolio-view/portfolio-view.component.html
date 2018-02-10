@@ -1,15 +1,15 @@
 <div>
   <div class="bn-preview-row row">    
     <div *ngFor="let preview of previews" 
-         on-mouseenter='setPreviewHoveredOver(preview.id)'
-         on-mouseleave='setPreviewHoveredOver()'
+         on-mouseenter='setFocus(preview.id)'
+         on-mouseleave='setFocus()'
          class="bn-preview col-sm-6 col-lg-4"> 
       
       <div class="center-block bn-preview-item">
         <img src="{{preview.img_ref}}" class="bn-preview-img">  
         
         <h2>
-          <span *ngIf="preview.id === previewHoveredOver" class="bn-preview-title">{{preview.title}}</span>
+          <span *ngIf="preview.id === itemInFocus" class="bn-preview-title">{{preview.title}}</span>
         </h2>
       </div>
       

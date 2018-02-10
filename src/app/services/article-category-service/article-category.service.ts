@@ -18,11 +18,20 @@ export class ArticleCategoryService {
 
   constructor(private http: HttpClient) { }
   
-  getCategories(): Observable<ArticleCategory[]> {
+  /**
+   * Retrieves a list of categories.
+   * @returns {Observable<ArticleCategory[]>} an Observable containing an array of article categories.
+   */
+  public getCategories(): Observable<ArticleCategory[]> {
     return of(MOCK_ARTICLE_CATEGORIES);
   }
 
-  saveCategory(category: ArticleCategory): Observable<Object> {
+  /**
+   * Saves the given category.
+   * @param category the category to save.
+   * @returns the http response.
+   */
+  public saveCategory(category: ArticleCategory): Observable<Object> {
     return this.http.post(this.SAVE_URL, category, httpOptions);
   }
 
