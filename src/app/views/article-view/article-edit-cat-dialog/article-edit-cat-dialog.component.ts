@@ -25,8 +25,20 @@ export class ArticleEditCatDialogComponent implements OnInit {
   ngOnInit() {
     this.category = new ArticleCategory();
   }
-    
-  show(category?: ArticleCategory): void {
+
+  /**
+   * Hides the edit dialog, removes any error messages.
+   */
+  public hide() {
+    this.error = null;
+    this.editCategoryModal.hide();
+  }
+  
+  /**
+   * Show the dialog to edit a category / make a new one.
+   * @param category the category to show (if left out, an empty dialog is shown instead)
+   */
+  public show(category?: ArticleCategory): void {
 
     this.category = category? category.clone() : new ArticleCategory();
     this.error = null;
@@ -34,7 +46,10 @@ export class ArticleEditCatDialogComponent implements OnInit {
     this.editCategoryModal.show();
   }
 
-  save(): void {
+  /**
+   * Saves the category currently being edited in the edit category dialog.
+   */
+  public save(): void {
 
     this.categoryService.saveCategory(this.category).toPromise()
       .then(value => {
