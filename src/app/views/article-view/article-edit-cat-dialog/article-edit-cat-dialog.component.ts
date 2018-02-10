@@ -20,6 +20,10 @@ export class ArticleEditCatDialogComponent implements OnInit {
 
   error: string;
   
+  /**
+   * Makes a new category edit dialog.
+   * @param {ArticleCategoryService} categoryService provides methods to retrieve, update and delete article categories.
+   */
   constructor(private categoryService: ArticleCategoryService) { }
 
   ngOnInit() {
@@ -36,7 +40,7 @@ export class ArticleEditCatDialogComponent implements OnInit {
   
   /**
    * Show the dialog to edit a category / make a new one.
-   * @param category the category to show (if left out, an empty dialog is shown instead)
+   * @param {ArticleCategory} category the category to show (if left out, an empty dialog is shown instead)
    */
   public show(category?: ArticleCategory): void {
 
