@@ -44,7 +44,7 @@ export class ArticleEditCatDialogComponent implements OnInit {
    */
   public show(category?: ArticleCategory): void {
 
-    this.category = category? category.clone() : new ArticleCategory();
+    this.category = category ? category.clone() : new ArticleCategory();
     this.error = null;
   
     this.editCategoryModal.show();

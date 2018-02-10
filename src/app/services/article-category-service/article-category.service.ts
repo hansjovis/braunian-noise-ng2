@@ -26,6 +26,7 @@ export class ArticleCategoryService {
   public getCategories(): Observable<ArticleCategory[]> {
     return this.http.get<ArticleCategory[]>(this.URL)
       .pipe(
+        map(this.mapToArticleCategories),
         catchError(this.handleError('getCategories', []))
       );
   }
@@ -40,6 +41,17 @@ export class ArticleCategoryService {
   }
 
   /**
+   * Converts an array of POJO's to ArticleCategories.
+   * @param objects the array of POJO's to map.
+   */
+  private mapToArticleCategories(objects) {
+    return objects.map(
+      category => 
+        new ArticleCategory(category._id, category.icon, 
+        category.title, category.description, category.active))
+  }
+
+/**
  * Handle Http operation that failed.
  * Let the app continue.
  * @param operation - name of the operation that failed
