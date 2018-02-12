@@ -5,10 +5,12 @@
     <div class="app-modal-body">
       <form #categoryForm="ngForm">
 
+        <!-- Shows error (e.g. when category has been filled in incorrectly). -->
         <div [hidden]="!error" class="alert alert-danger">
           {{error}}
         </div>
 
+        <!-- Title. -->
         <div class="row bn-form-row">
           <label for="title" class="col-lg-3">Title</label>
           <div class="col-lg-9">
@@ -20,7 +22,7 @@
           </div>
         </div>
          
-
+        <!-- Icon -->
         <div class="row bn-form-row">
           <label for="title" class="col-md-3">Icon</label>
           <div class="col-md-6">
@@ -35,6 +37,7 @@
           </div>
         </div>
         
+        <!-- Description -->
         <div class="row bn-form-row">
           <label for="title" class="col-lg-3">Description</label>
           <div class="col-lg-9">
@@ -43,8 +46,9 @@
         </div> 
       </form>
     </div>
+    
     <div class="app-modal-footer">
-      <button type="button" class="btn btn-default" (click)="editCategoryModal.hide()">Cancel</button>
+      <button type="button" class="btn btn-default" (click)="hide()">Cancel</button>
       <button type="button" class="btn btn-primary" (click)="save()">Save</button>
     </div>
 </app-modal>  

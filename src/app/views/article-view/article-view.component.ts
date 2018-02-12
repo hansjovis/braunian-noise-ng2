@@ -60,9 +60,9 @@ export class ArticleViewComponent implements OnInit {
   }
   
   editCategory(id?: string): void {
-
     if(id != undefined) {
-      var selectedCat = this.categories.filter(cat => cat._id === id)[0];  
+      var selectedCat = this.categories.filter(cat => cat._id === id)[0];
+      console.log(selectedCat);  
       this.editCatDialog.show(selectedCat);
     }
     else {

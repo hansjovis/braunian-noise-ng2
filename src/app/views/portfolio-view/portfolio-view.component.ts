@@ -11,20 +11,32 @@ import { PortfolioItemPreview } from '../../model/portfolio-item-preview'
 export class PortfolioViewComponent implements OnInit {
 
   previews: PortfolioItemPreview[] ;
-  /** As an item ID. */
-  previewHoveredOver: string ;  
+  /** As an portfolio item ID. */
+  itemInfocus: string ;  
 
+  /**
+   * Makes a new portfolio item view.
+   * @param portfolioItemService provides CRUD-methods on portfolio items.
+   */
   constructor(private portfolioItemService: PortfolioItemService) { }
 
   ngOnInit() {
     this.getPreviews();
   }
   
-  setPreviewHoveredOver(id: string) {
-    this.previewHoveredOver = id;
+  /**
+   * Focuses the view on a specific portfolio item.
+   * E.g. to show its title.
+   * @param {string} id (optional) the id of the portfolio item that should be in focus (focuses none if not set).
+   */
+  public setFocus(id?: string) {
+    this.itemInfocus = id;
   }
   
-  getPreviews() {
+  /**
+   * Retrieves a list of all portfolio item previews and injects it into the template.
+   */
+  private getPreviews() {
     this.portfolioItemService.getPreviews()
         .subscribe(previews => this.previews = previews);
   }

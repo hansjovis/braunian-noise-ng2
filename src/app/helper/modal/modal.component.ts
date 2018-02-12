@@ -5,6 +5,9 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.css']
 })
+/**
+ * A dialog overlay.
+ */
 export class ModalComponent implements OnInit {
 
   visible: boolean;
@@ -19,16 +22,26 @@ export class ModalComponent implements OnInit {
     
   }
   
+  /**
+   * Shows the dialog.
+   */
   public show() {
     this.visible = true;
     setTimeout(() => this.visibleAnimate = true, 100);
   }
 
+  /**
+   * Hides the dialog
+   */
   public hide() {
     this.visibleAnimate = false;
     setTimeout(() => this.visible = false, 300);
   }
 
+  /**
+   * Hides the dialog when the user clicks outside of the dialog.
+   * @param {MouseEvent} event the click event. 
+   */
   public onContainerClicked(event: MouseEvent) {
     if ((<HTMLElement>event.target).classList.contains('modal')) {
       this.hide();

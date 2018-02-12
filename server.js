@@ -1,6 +1,7 @@
 
 // Middleware.
 const express = require('express');
+const session = require('express-session');
 // Connection with MongoDB.
 const mongoose = require('mongoose');
 // Authentication. 
@@ -11,7 +12,7 @@ const bcrypt = require('bcrypt-nodejs');
 // Pull information from HTML POST.
 const bodyParser = require('body-parser');
 
-var session = require('express-session');
+const path = require('path');
 
 // Import Mongoose models;
 const User = require('./backend/models/user-model'); 		
@@ -75,7 +76,7 @@ passport.use(new LocalStrategy(
 
 // Setup Express.
 const app = express();
-app.use(express.static(__dirname + '/dist'));
+
 app.use(session({
 	secret: 'display panther', 
 	resave: false,
@@ -93,10 +94,7 @@ app.use(bodyParser.json({limit: '50mb'}));                                     /
 app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
 
 // Main entry point.
-app.get('*', function(req, res) {
-	// load the main page!
-	res.sendFile(__dirname + '/dist/index.html'); 
-});
+app.use(express.static(path.join(__dirname, '/dist')));
 
 /**
  *	Transforms the given user into a user profile,
@@ -146,21 +144,21 @@ var is_logged_in = function(req, res, next) {
 
 // Logout route.
 app.post('/api/logout', function(req, res) {
-  	console.log(`Braunian Noise: User logged out.`);
+  console.log(`Braunian Noise: User logged out.`);
 	req.logout();  
 	res.status(200).send({text: 'Successfully logged out!'});
 });
 
 // Save category route.
-app.post('/api/article_category/save', 
+app.post('/api/article_category', 
 	is_logged_in,
-	function(req, res){
+	(req, res) => {
 
 		var category = req.body;
 
 		// Check if the category already exists.
-		ArticleCategory.findById(category.id,
-			function(err, found_category) {
+		ArticleCategory.findById(category._id,
+			(err, found_category) => {
 				if(err) {
 					console.log(err);
 
@@ -169,12 +167,18 @@ app.post('/api/article_category/save',
 
 				if(found_category) {
 					// Save over existing category.
-					found_category = category;
-					found_category.save();
-					
-					res.status(200).send({message: 'Article category succesfuly updated.'});
+					console.log(found_category);
+					ArticleCategory.findByIdAndUpdate(found_category._id, category, 
+						(error, response) => {
+							if(error) {
+								res.status(400).send({message: 'an error occured.'});
+							}
+							else {
+								res.status(200).send({message: 'Article category succesfuly updated.'});
+							}
+					})
 				}
-				else{
+				else {
 					// Save new category.
 					let new_category = new ArticleCategory(category);
 					new_category.save();
@@ -183,6 +187,20 @@ app.post('/api/article_category/save',
 				}
 		});
 });
+
+// Retrieve category route.
+app.get('/api/article_category',
+	(req, res) => {
+		// Find all article categories.
+		ArticleCategory.find({}, (err, categories) => {
+			if(err) {
+				res.status(400).send(err);
+			} else {
+				res.status(200).send(categories);
+			}
+		});
+	}
+)
 
 // Start server.
 app.listen(8080);

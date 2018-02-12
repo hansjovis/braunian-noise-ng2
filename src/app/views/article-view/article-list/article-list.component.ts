@@ -22,15 +22,29 @@ export class ArticleListComponent implements OnInit {
     this.getArticles();
   }
   
-  isLoggedIn(): boolean {
+  /**
+   * Checks whether a user is logged in or not.
+   * @returns true if a user is logged in, false when not.
+   */
+  public isLoggedIn(): boolean {
     return this.authenticateService.userLoggedIn();  
   }
   
-  articleHasCategories(article: Article, categories: string[]) {
+  /**
+   * Checks whether the categories of the given article 
+   * includes all of the given categories.
+   * @param article the article to check.
+   * @param categories the categories to check.
+   * @return true if all of the given categories are included in the article's categories.  
+   */
+  public articleHasCategories(article: Article, categories: string[]): boolean {
     return categories.every(cat => article.categories.includes(cat));
   }
 
-  getArticles(): void {
+  /**
+   * Retrieves the list of articles.
+   */
+  private getArticles(): void {
     this.articleService.getArticles()
         .subscribe(articles => this.articles = articles);
   }
