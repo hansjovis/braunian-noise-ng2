@@ -29,7 +29,7 @@ export class AuthenticateService {
   }
   
   public logOut(): void {
-    this.http.get(this.logoutRoute, { responseType: 'text' })
+    this.http.post(this.logoutRoute, { responseType: 'text' })
       .subscribe(
         response => { localStorage.removeItem('bn-user') }); 
   }

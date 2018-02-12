@@ -144,7 +144,7 @@ var is_logged_in = function(req, res, next) {
 
 // Logout route.
 app.post('/api/logout', function(req, res) {
-  	console.log(`Braunian Noise: User logged out.`);
+  console.log(`Braunian Noise: User logged out.`);
 	req.logout();  
 	res.status(200).send({text: 'Successfully logged out!'});
 });
@@ -157,7 +157,7 @@ app.post('/api/article_category',
 		var category = req.body;
 
 		// Check if the category already exists.
-		ArticleCategory.findById(category.id,
+		ArticleCategory.findById(category._id,
 			(err, found_category) => {
 				if(err) {
 					console.log(err);
@@ -167,12 +167,18 @@ app.post('/api/article_category',
 
 				if(found_category) {
 					// Save over existing category.
-					found_category = category;
-					found_category.save();
-					
-					res.status(200).send({message: 'Article category succesfuly updated.'});
+					console.log(found_category);
+					ArticleCategory.findByIdAndUpdate(found_category._id, category, 
+						(error, response) => {
+							if(error) {
+								res.status(400).send({message: 'an error occured.'});
+							}
+							else {
+								res.status(200).send({message: 'Article category succesfuly updated.'});
+							}
+					})
 				}
-				else{
+				else {
 					// Save new category.
 					let new_category = new ArticleCategory(category);
 					new_category.save();
