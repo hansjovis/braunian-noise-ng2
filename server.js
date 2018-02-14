@@ -198,6 +198,16 @@ app.get('/api/article_category',
 	}
 )
 
+app.delete('/api/article_category',
+	(req, res) => {
+		let id = req.query.id;
+		ArticleCategory.findByIdAndRemove(id).then(
+			response => res.status(200).send(response),
+			error => res.status(400).send(error)
+		)
+	}
+)
+
 // Main entry point for serving the Angular app.
 app.use(express.static(path.join(__dirname, 'dist')));
 app.get('/*', (req, res) => {

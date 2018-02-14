@@ -59,9 +59,22 @@ export class ArticleEditCatDialogComponent implements OnInit {
       .then(value => {
         console.log(value);
         this.editCategoryModal.hide();
+        window.location.reload();
       },
       error => this.error = error.error);
 
+  }
+
+  public delete(): void {
+
+    console.log("delete!");
+    this.categoryService.delete(this.category).toPromise()
+      .then(value => {
+        console.log(value);
+        this.editCategoryModal.hide();
+        window.location.reload();
+      },
+    error => this.error = error);
   }
 
 }

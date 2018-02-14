@@ -40,6 +40,10 @@ export class ArticleCategoryService {
     return this.http.post(this.URL, category, httpOptions);
   }
 
+  public delete(category: ArticleCategory): Observable<Object> {
+    return this.http.delete(`${this.URL}?id=${category._id}`, httpOptions);
+  }
+
   /**
    * Converts an array of POJO's to ArticleCategories.
    * @param objects the array of POJO's to map.
