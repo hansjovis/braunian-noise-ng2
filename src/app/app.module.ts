@@ -27,6 +27,8 @@ import { ArticleService } from './services/article-service/article.service';
 import { PortfolioItemService } from './services/portfolio-item-service/portfolio-item.service';
 import { AuthenticateService } from './services/authenticate-service/authenticate.service';
 import { ArticleEditCatDialogComponent } from './views/article-view/article-edit-cat-dialog/article-edit-cat-dialog.component';
+import { SingleArticleViewComponent } from './views/article-view/single-article-view/single-article-view.component';
+import { SingleArticleEditViewComponent } from './views/article-view/single-article-edit-view/single-article-edit-view.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { ArticleEditCatDialogComponent } from './views/article-view/article-edit
     FooterComponent,
     ModalComponent,
     ArticleListComponent,
-    ArticleEditCatDialogComponent
+    ArticleEditCatDialogComponent,
+    SingleArticleViewComponent,
+    SingleArticleEditViewComponent
   ],
   imports: [
     BrowserModule,

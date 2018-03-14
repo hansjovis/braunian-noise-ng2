@@ -65,9 +65,11 @@ export class ArticleEditCatDialogComponent implements OnInit {
 
   }
 
+  /**
+   * Deletes the category currently being edited from the server.
+   */
   public delete(): void {
 
-    console.log("delete!");
     this.categoryService.delete(this.category).toPromise()
       .then(value => {
         console.log(value);
