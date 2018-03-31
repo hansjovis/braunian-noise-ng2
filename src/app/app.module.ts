@@ -29,6 +29,7 @@ import { AuthenticateService } from './services/authenticate-service/authenticat
 import { ArticleEditCatDialogComponent } from './views/article-view/article-edit-cat-dialog/article-edit-cat-dialog.component';
 import { SingleArticleViewComponent } from './views/article-view/single-article-view/single-article-view.component';
 import { SingleArticleEditViewComponent } from './views/article-view/single-article-edit-view/single-article-edit-view.component';
+import { ArticleCategoriesComponent } from './views/article-view/article-categories/article-categories.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { SingleArticleEditViewComponent } from './views/article-view/single-arti
     ArticleListComponent,
     ArticleEditCatDialogComponent,
     SingleArticleViewComponent,
-    SingleArticleEditViewComponent
+    SingleArticleEditViewComponent,
+    ArticleCategoriesComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,31 @@
+<div class="bn-panel-section">
+  <div class="bn-panel-header">
+    Categories
+  </div>
+  <div class="bn-panel-content">
+    <ul class="bn-category-list">
+      <li *ngFor="let category of categories" class="bn-category">
+        <div class="bn-category-container">
+          <!-- Category. -->
+          <a class="bn-category-button" (click)="toggleCategory(category._id)">  
+            <!-- Check box. -->
+            <span *ngIf="!category.active" class="fa fa-square-o bn-category-checkbox"></span>
+            <span *ngIf="category.active" class="fa fa-check-square-o bn-category-checkbox"></span> 
+            <!-- Icon. -->                 
+            <span class="fa fa-{{category.icon}}"></span> 
+            <!-- Title. -->
+            {{category.title}} 
+          </a>
+          <!-- Edit button. -->
+          <a *ngIf="isLoggedIn()" (click)="editCategory(category._id)" class="fa fa-edit pull-right"></a>
+        </div>
+      </li>
+    </ul>
+    <div *ngIf="isLoggedIn()" class="text-right" style="margin-top: 10px">
+      <a (click)="editCategory()" class="btn btn-primary">Add Category</a>
+    </div>
+  </div>
+  <!-- Category edit dialog -->
+  <app-article-edit-cat-dialog #editCatDialog (onSaved)="getCategories()"></app-article-edit-cat-dialog>
+</div>
+

@@ -15,58 +15,29 @@ import { ArticleEditCatDialogComponent } from './article-edit-cat-dialog/article
 })
 export class ArticleViewComponent implements OnInit {
 
-  @ViewChild( ArticleEditCatDialogComponent ) editCatDialog: ArticleEditCatDialogComponent;
-
-  categories: ArticleCategory[];
   activeCategories: string[];
-  
-  categoryToEdit: string;
 
-  constructor(private categoryService: ArticleCategoryService,
-              private authenticateService: AuthenticateService) { }
+  constructor( private authenticateService: AuthenticateService ) {
+
+  }
 
   ngOnInit() {
-    this.getCategories();
+
   }
 
-  getCategories(): void {
-    this.categoryService.getCategories()
-      .subscribe(categories => this.categories = categories);
-  }
-  
-  logOut(): void {  
-    this.authenticateService.logOut();
-  }
-  
-  isLoggedIn(): boolean {
-    return this.authenticateService.userLoggedIn();  
-  }
-  
   getLoggedInUser(): User {
     return this.authenticateService.getLoggedInUser();
   } 
-  
-  toggleCategory(id: string): void { 
-  
-    this.categories.forEach(cat => {
-      if(cat._id === id) {
-        cat.active = cat.active? false : true ;
-      }
-    });    
-    
-    this.activeCategories = this.categories
-      .filter(cat => cat.active)
-      .map(cat => cat._id);
+
+  isLoggedIn(): boolean {
+    return this.authenticateService.userLoggedIn();  
   }
-  
-  editCategory(id?: string): void {
-    if(id != undefined) {
-      var selectedCat = this.categories.filter(cat => cat._id === id)[0];
-      console.log(selectedCat);  
-      this.editCatDialog.show(selectedCat);
-    }
-    else {
-      this.editCatDialog.show();
-    }    
+
+  logOut(): void {  
+    this.authenticateService.logOut();
+  }
+
+  onActiveCategoriesChanged(categories : string[]) {
+    this.activeCategories = categories;
   }
 }

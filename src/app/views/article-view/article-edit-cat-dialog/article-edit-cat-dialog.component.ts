@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, EventEmitter, Output } from '@angular/core';
 
 import { ArticleCategory } from '../../../model/article-category'; 
 
@@ -15,6 +15,7 @@ export class ArticleEditCatDialogComponent implements OnInit {
  
 
   @ViewChild( ModalComponent ) editCategoryModal: ModalComponent;
+  @Output() onSaved = new EventEmitter<Boolean>();
 
   category: ArticleCategory;
 
@@ -57,9 +58,8 @@ export class ArticleEditCatDialogComponent implements OnInit {
 
     this.categoryService.saveCategory(this.category).toPromise()
       .then(value => {
-        console.log(value);
         this.editCategoryModal.hide();
-        window.location.reload();
+        this.onSaved.emit(true);
       },
       error => this.error = error.error);
 
@@ -72,9 +72,8 @@ export class ArticleEditCatDialogComponent implements OnInit {
 
     this.categoryService.delete(this.category).toPromise()
       .then(value => {
-        console.log(value);
         this.editCategoryModal.hide();
-        window.location.reload();
+        this.onSaved.emit(true);
       },
     error => this.error = error);
   }
