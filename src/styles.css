@@ -81,6 +81,18 @@ body {
   }
 }
 
+/* Header font */
+@font-face {
+  font-family: 'Russo-One';
+  src: url(assets/fonts/Russo_One/RussoOne-Regular.ttf) format("truetype");
+}
+
+/* Content font */
+@font-face {
+  font-family: 'Open-Sans';
+  src: url(assets/fonts/Open_Sans/OpenSans-Regular.ttf) format("truetype");
+}
+
 /* Braunian Noise specific */
 
 .bn-sidebar {
