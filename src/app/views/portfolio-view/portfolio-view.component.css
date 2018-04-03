@@ -1,7 +1,4 @@
 
-.bn-preview-row {
-  
-}
 
 .bn-preview {
   position: relative;
@@ -30,7 +27,7 @@
 }
 
 .bn-preview-title {  
-
+  font-family: 'Russo-One', sans-serif;
   color: white;
   
   background: rgba(20, 68, 108, 0.7);
