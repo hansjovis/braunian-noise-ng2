@@ -1,0 +1,17 @@
+
+<div 
+  [hidden]="inEditMode"
+  [innerHtml]="row.text" 
+  (click)="setEditMode(true)"
+  class="text-row display">
+</div>
+<textarea 
+  #textarea
+  [hidden]="!inEditMode"
+  autofocus="true"
+  (blur)="setEditMode(false)"
+  [(ngModel)]="row.textRaw" 
+  rows="8" cols="50" 
+  class="text-row">
+    {{row.textRaw}}
+</textarea>

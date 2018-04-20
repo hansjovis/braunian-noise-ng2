@@ -2,19 +2,36 @@
   <article class="article-block">
     <!-- Header image. -->
     <figure>
-      <img class="header-img" src="../../../../assets/articles/mock/placeholder-image600x300.jpg" alt="default header image">
-      <figcaption class="caption">Caption.</figcaption>
+      <!-- Clicking on the image triggers the file upload. -->
+      <img id="header-image" class="header-img" src="{{article.img_ref}}" alt="{{article.img_caption}}" (click)="triggerUploadImage()">
+      <input class="caption input-borderless" [(ngModel)]="article.img_caption" placeholder="Caption.">
+      <!-- Hidden file input. -->
+      <div style="height:0px;overflow:hidden">
+        <input #headerImageUpload type="file" (change)="onImageUpload($event)">
+      </div>
     </figure>
     <!-- Title. -->
     <header>
-      <h1 class="header">Header</h1>
+      <input [(ngModel)]="article.title" class="header-1 input-borderless" placeholder="Article header">
     </header>
     
     <!-- Metadata (author, date) -->
+    <div class="metadata">Posted on {{article.date | date:'yyyy-MM-dd'}} by {{article.author}}</div>
 
-    <!-- Content rows, e.g. header, paragraph or image. -->
+    <!-- Content rows, e.g. paragraph or image. -->
+    <div *ngFor="let row of article.rows">
+      <app-text-row *ngIf="row.type === 'TEXT'" [row]="row"></app-text-row>
+      <app-image-row *ngIf="row.type === 'IMAGE'" [row]="row"></app-image-row>
+    </div>
 
     <!-- Row of buttons to add new content row of specific type. -->
-
+    <div class="add-content-row">
+      <a class="btn btn-default" (click)="addRow('TEXT')"><span class="fa fa-align-left"></span></a>
+      <a class="btn btn-default" (click)="addRow('IMAGE')"><span class="fa fa-image"></span></a>
+      <a class="btn btn-default"><span class="fa fa-code"></span></a>
+      <a class="btn btn-default"><span class="fa fa-quote-right"></span></a>
+      
+      <a class="btn btn-primary" style="margin-left:20px;"><span class="fa fa-save"></span> Save</a>
+    </div>
   </article>
 </div>

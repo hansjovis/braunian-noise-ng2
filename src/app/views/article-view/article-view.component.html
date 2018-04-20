@@ -3,7 +3,7 @@
   <div *ngIf="isLoggedIn()" id="admin-bar">
     <h3> Welcome {{ getLoggedInUser().screenname }} 
       <div class="pull-right">
-        <a class="btn btn-primary">Add Article</a>
+        <a class="btn btn-primary" [routerLink]="['edit', 'new']">Add Article</a>
         <a (click)="logOut()" class="btn btn-danger">Log Out</a>
       </div>    
     </h3>    

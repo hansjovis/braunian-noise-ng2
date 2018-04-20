@@ -1,0 +1,10 @@
+<figure>
+  <img class="image" src="{{row.src}}" (click)="triggerUploadImage()">
+  <input class="caption input-borderless" value="{{row.caption}}" placeholder="Caption.">
+  <!-- Hidden file input. -->
+  <div style="height:0px;overflow:hidden">
+    <input #imageUpload type="file" (change)="onImageUpload($event)">
+  </div>
+</figure>
+
+

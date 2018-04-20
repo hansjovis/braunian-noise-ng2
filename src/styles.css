@@ -158,3 +158,18 @@ body {
 .bn-form-alert a:hover {
   color: rgb(209, 133, 133);
 }
+
+.input-borderless {
+  width: 100%;
+  padding-left: 10px;
+  border: 1px solid white;
+  border-radius: 2px;
+}
+
+.input-borderless:focus {
+  border: 1px solid rgb(150, 150, 150);
+}
+
+.bn-blue {
+  background-color: #1f69a7;
+}

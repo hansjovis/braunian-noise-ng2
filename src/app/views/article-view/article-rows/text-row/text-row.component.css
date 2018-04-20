@@ -1,0 +1,12 @@
+
+.text-row {
+  font-size: 20px;
+  padding-left: 10px;
+  width: 100%;
+  min-height: 30px;
+}
+
+.display {
+  border: white 1px solid;
+}
+

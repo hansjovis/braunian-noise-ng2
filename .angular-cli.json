@@ -23,7 +23,9 @@
         "../bower_components/bootstrap/dist/css/bootstrap.min.css",
         "../bower_components/font-awesome/css/font-awesome.min.css"
       ],
-      "scripts": [ ],
+      "scripts": [ 
+        "../bower_components/showdown/dist/showdown.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

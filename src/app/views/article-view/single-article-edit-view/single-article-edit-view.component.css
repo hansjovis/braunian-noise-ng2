@@ -24,7 +24,19 @@
   font-style: italic;
 }
 
-.header {
+.header-1 {
   font-family: 'Russo-One';
   font-size: 40px;
+}
+
+.metadata {
+  padding: 10px;
+  width: 100%;
+  text-align: left;
+  color: rgb(56, 56, 56);
+  font-style: italic;
+}
+
+.add-content-row {
+  padding-left: 10px;
 }
