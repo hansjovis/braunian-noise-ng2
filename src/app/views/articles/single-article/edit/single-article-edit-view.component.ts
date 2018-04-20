@@ -7,6 +7,7 @@ import { AuthenticateService } from '../../../../services/authenticate-service/a
 import { Article } from '../../../../model/article-new';
 import { TextRow } from '../../../../model/article-rows/text-row';
 import { ImageRow } from '../../../../model/article-rows/image-row';
+import { ArticleCategory } from '../../../../model/article-category';
 
 @Component({
   selector: 'app-single-article-edit-view',
@@ -32,7 +33,9 @@ export class SingleArticleEditViewComponent implements OnInit {
       // New article.
       this.article = new Article();
 
-      this.article.img_ref = "../../../../assets/articles/mock/placeholder-image600x300.jpg";
+      this.article.header_img = new ImageRow();
+      this.article.header_img.src = "../../../../assets/articles/mock/placeholder-image600x300.jpg";
+      
       this.article.date = Date.now();
       this.article.author = this.authenticateService.getLoggedInUser().screenname;
       this.article.rows = [];
@@ -64,9 +67,17 @@ export class SingleArticleEditViewComponent implements OnInit {
     let reader = new FileReader();
 
     reader.onload = (e: any) => {
-      this.article.img_ref = e.target.result;
+      this.article.header_img.src = e.target.result;
     };
     reader.readAsDataURL(event.target.files[0]);
+  }
+
+  save(): void {
+    console.log(this.article);
+  }
+
+  setCategories(categories: ArticleCategory[]) {
+    this.article.categories = categories;
   }
 
 }

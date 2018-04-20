@@ -31,6 +31,5 @@ export class TextRowComponent implements OnInit {
     if (!inEditMode) {
       this.row.text = this.converter.makeHtml(this.row.textRaw);
     } 
-    console.log(this.textarea);
   }
 }

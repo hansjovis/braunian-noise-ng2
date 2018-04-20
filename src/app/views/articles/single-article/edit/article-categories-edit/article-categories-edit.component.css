@@ -1,0 +1,27 @@
+
+.category-block {
+  margin: 5px 0px;
+  width: 100%;
+  min-height: 20px;
+}
+
+.category {
+  padding: 5px;
+  margin: 3px;
+  border-radius: 3px;
+  
+  min-width: 40px;
+
+  color: white;
+}
+
+.category-disabled {
+  background-color: gray;
+}
+
+.category:hover {
+  text-decoration: none;
+  background-color: steelblue;
+
+  cursor: pointer;
+}

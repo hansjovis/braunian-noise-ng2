@@ -1,0 +1,30 @@
+<div class="category-block" 
+  (mouseenter)="setEditMode(true)" 
+  (mouseleave)="setEditMode(false)">
+
+  <span class="pull-right">
+
+    <!-- Selected categories. -->
+    <a
+    [hidden]="!category.active"
+    (click)="setActive(category._id, false)"
+    *ngFor="let category of categories"
+    class="category bn-blue"
+    >
+    <span class="fa fa-{{category.icon}}"></span>
+      {{category.title}}
+    </a>
+
+    <!-- Unselected categories -->
+    <a
+    [hidden]="!editMode || category.active"
+    (click)="setActive(category._id, true)"
+    *ngFor="let category of categories"
+    class="category category-disabled"
+    >
+    <span class="fa fa-{{category.icon}}"></span>
+    
+    </a>
+  </span>
+  
+</div>

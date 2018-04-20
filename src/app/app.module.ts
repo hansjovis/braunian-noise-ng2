@@ -37,6 +37,7 @@ import { SingleArticleEditViewComponent } from './views/articles/single-article/
 
 import { TextRowComponent } from './views/articles/single-article/edit/article-rows/text-row/text-row.component';
 import { ImageRowComponent } from './views/articles/single-article/edit/article-rows/image-row/image-row.component';
+import { ArticleCategoriesEditComponent } from './views/articles/single-article/edit/article-categories-edit/article-categories-edit.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { ImageRowComponent } from './views/articles/single-article/edit/article-
     SingleArticleEditViewComponent,
     ArticleCategoriesComponent,
     TextRowComponent,
-    ImageRowComponent
+    ImageRowComponent,
+    ArticleCategoriesEditComponent
   ],
   imports: [
     BrowserModule,
