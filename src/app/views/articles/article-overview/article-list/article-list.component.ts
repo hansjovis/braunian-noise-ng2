@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
-import { ArticleService } from '../../../services/article-service/article.service';
-import { Article } from '../../../model/article';
-import { AuthenticateService } from '../../../services/authenticate-service/authenticate.service';
+import { ArticleService } from '../../../../services/article-service/article.service';
+import { Article } from '../../../../model/article';
+import { AuthenticateService } from '../../../../services/authenticate-service/authenticate.service';
 
 @Component({
   selector: 'app-article-list',

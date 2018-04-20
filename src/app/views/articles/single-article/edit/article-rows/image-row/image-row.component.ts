@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 
-import { ImageRow } from '../../../../model/article-rows/image-row';
+import { ImageRow } from '../../../../../../model/article-rows/image-row';
 
 @Component({
   selector: 'app-image-row',

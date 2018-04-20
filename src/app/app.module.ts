@@ -8,14 +8,14 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 
-import { LandingViewComponent } from './views/landing-view/landing-view.component';
+import { LandingViewComponent } from './views/landing/landing-view.component';
 
-import { ArticleViewComponent } from './views/article-view/article-view.component';
-import { ArticleListComponent } from './views/article-view/article-list/article-list.component';
+import { ArticleViewComponent } from './views/articles/article-overview/article-overview.component';
+import { ArticleListComponent } from './views/articles/article-overview/article-list/article-list.component';
 
-import { PortfolioViewComponent } from './views/portfolio-view/portfolio-view.component';
+import { PortfolioViewComponent } from './views/portfolio/portfolio-view.component';
 
-import { AboutViewComponent } from './views/about-view/about-view.component';
+import { AboutViewComponent } from './views/about/about-view.component';
 
 import { ModalComponent } from './helper/modal/modal.component';
 
@@ -26,12 +26,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { ArticleService } from './services/article-service/article.service';
 import { PortfolioItemService } from './services/portfolio-item-service/portfolio-item.service';
 import { AuthenticateService } from './services/authenticate-service/authenticate.service';
-import { ArticleEditCatDialogComponent } from './views/article-view/article-edit-cat-dialog/article-edit-cat-dialog.component';
-import { SingleArticleViewComponent } from './views/article-view/single-article-view/single-article-view.component';
-import { SingleArticleEditViewComponent } from './views/article-view/single-article-edit-view/single-article-edit-view.component';
-import { ArticleCategoriesComponent } from './views/article-view/article-categories/article-categories.component';
-import { TextRowComponent } from './views/article-view/article-rows/text-row/text-row.component';
-import { ImageRowComponent } from './views/article-view/article-rows/image-row/image-row.component';
+
+import { ArticleCategoriesComponent } from './views/articles/article-overview/article-categories/article-categories.component';
+import { ArticleEditCatDialogComponent } from './views/articles/article-overview/article-categories/article-edit-cat-dialog/article-edit-cat-dialog.component';
+
+import { SingleArticleViewComponent } from './views/articles/single-article/view/single-article.component';
+
+import { SingleArticleEditViewComponent } from './views/articles/single-article/edit/single-article-edit-view.component';
+
+
+import { TextRowComponent } from './views/articles/single-article/edit/article-rows/text-row/text-row.component';
+import { ImageRowComponent } from './views/articles/single-article/edit/article-rows/image-row/image-row.component';
 
 @NgModule({
   declarations: [

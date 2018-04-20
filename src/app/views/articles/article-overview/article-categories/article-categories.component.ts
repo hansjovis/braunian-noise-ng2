@@ -1,12 +1,12 @@
 import { Component, OnInit, ViewChild, EventEmitter, Output } from '@angular/core';
 
-import { ArticleCategory } from '../../../model/article-category'; 
-import { User } from '../../../model/user'; 
+import { ArticleCategory } from '../../../../model/article-category'; 
+import { User } from '../../../../model/user'; 
 
-import { ArticleCategoryService } from '../../../services/article-category-service/article-category.service';
-import { AuthenticateService } from '../../../services/authenticate-service/authenticate.service';
+import { ArticleCategoryService } from '../../../../services/article-category-service/article-category.service';
+import { AuthenticateService } from '../../../../services/authenticate-service/authenticate.service';
 
-import { ArticleEditCatDialogComponent } from '../article-edit-cat-dialog/article-edit-cat-dialog.component';
+import { ArticleEditCatDialogComponent } from './article-edit-cat-dialog/article-edit-cat-dialog.component';
 
 @Component({
   selector: 'app-article-categories',

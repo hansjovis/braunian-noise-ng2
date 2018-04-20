@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 
-import { TextRow } from '../../../../model/article-rows/text-row';
+import { TextRow } from '../../../../../../model/article-rows/text-row';
 
 /** Markdown parser library. */
 declare var showdown: any;

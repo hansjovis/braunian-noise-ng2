@@ -3,9 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 @Component({
-  selector: 'app-single-article-view',
-  templateUrl: './single-article-view.component.html',
-  styleUrls: ['./single-article-view.component.css']
+  selector: 'app-single-article',
+  templateUrl: './single-article.component.html',
+  styleUrls: ['./single-article.component.css']
 })
 export class SingleArticleViewComponent implements OnInit {
 

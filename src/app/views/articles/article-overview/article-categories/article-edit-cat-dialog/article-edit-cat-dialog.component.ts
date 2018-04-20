@@ -1,10 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef, EventEmitter, Output } from '@angular/core';
-
-import { ArticleCategory } from '../../../model/article-category'; 
-
-import { ModalComponent } from '../../../helper/modal/modal.component';
 import { createTemplateData } from '@angular/core/src/view/refs';
-import { ArticleCategoryService } from '../../../services/article-category-service/article-category.service';
+
+import { ArticleCategory } from '../../../../../model/article-category'; 
+import { ModalComponent } from '../../../../../helper/modal/modal.component';
+import { ArticleCategoryService } from '../../../../../services/article-category-service/article-category.service';
 
 @Component({
   selector: 'app-article-edit-cat-dialog',

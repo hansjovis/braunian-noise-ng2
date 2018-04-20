@@ -2,11 +2,11 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { AuthenticateService } from '../../../services/authenticate-service/authenticate.service';
+import { AuthenticateService } from '../../../../services/authenticate-service/authenticate.service';
 
-import { Article } from '../../../model/article-new';
-import { TextRow } from '../../../model/article-rows/text-row';
-import { ImageRow } from '../../../model/article-rows/image-row';
+import { Article } from '../../../../model/article-new';
+import { TextRow } from '../../../../model/article-rows/text-row';
+import { ImageRow } from '../../../../model/article-rows/image-row';
 
 @Component({
   selector: 'app-single-article-edit-view',

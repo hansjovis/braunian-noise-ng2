@@ -1,12 +1,16 @@
 import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { LandingViewComponent } from './views/landing-view/landing-view.component';
-import { ArticleViewComponent } from './views/article-view/article-view.component';
-import { SingleArticleEditViewComponent } from './views/article-view/single-article-edit-view/single-article-edit-view.component';
-import { SingleArticleViewComponent } from './views/article-view/single-article-view/single-article-view.component';
-import { AboutViewComponent } from './views/about-view/about-view.component';
-import { PortfolioViewComponent } from './views/portfolio-view/portfolio-view.component';
+// Landing page.
+import { LandingViewComponent } from './views/landing/landing-view.component';
+
+import { ArticleViewComponent } from './views/articles/article-overview/article-overview.component';
+  import { SingleArticleEditViewComponent } from './views/articles/single-article/edit/single-article-edit-view.component';
+  import { SingleArticleViewComponent } from './views/articles/single-article/view/single-article.component';
+
+import { AboutViewComponent } from './views/about/about-view.component';
+
+import { PortfolioViewComponent } from './views/portfolio/portfolio-view.component';
 
 const routes: Routes = [
   { path: 'articles', component: ArticleViewComponent },
