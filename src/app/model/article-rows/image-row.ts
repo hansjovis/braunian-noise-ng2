@@ -7,8 +7,4 @@ export class ImageRow extends ArticleRow {
   public src: string;
   public caption: string;
 
-  constructor() {
-    super();
-  }
-
 } 

@@ -28,7 +28,10 @@
     
 
     <!-- Content rows, e.g. paragraph or image. -->
-    <div *ngFor="let row of article.rows">
+    <div *ngFor="let row of article.rows; let i = index">
+      <!-- Delete row button. -->
+      <a class="pull-right" (click)="deleteRow(i)"><span class="close-icon fa fa-times"></span></a>
+      <!-- Actual row components. -->
       <app-text-row *ngIf="row.type === 'TEXT'" [row]="row"></app-text-row>
       <app-image-row *ngIf="row.type === 'IMAGE'" [row]="row"></app-image-row>
     </div>

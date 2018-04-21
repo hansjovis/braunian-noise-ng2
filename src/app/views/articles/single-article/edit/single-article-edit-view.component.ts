@@ -76,6 +76,10 @@ export class SingleArticleEditViewComponent implements OnInit {
     console.log(this.article);
   }
 
+  deleteRow(rowIndex: number): void {
+    this.article.rows.splice(rowIndex, 1);
+  }
+
   setCategories(categories: ArticleCategory[]) {
     this.article.categories = categories;
   }

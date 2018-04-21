@@ -4,27 +4,30 @@
 
   <span class="pull-right">
 
-    <!-- Selected categories. -->
-    <a
-    [hidden]="!category.active"
-    (click)="setActive(category._id, false)"
-    *ngFor="let category of categories"
-    class="category bn-blue"
-    >
-    <span class="fa fa-{{category.icon}}"></span>
-      {{category.title}}
-    </a>
+    <small [hidden]="editMode || !nonActive">No categories defined. Click here to add some!</small>
 
     <!-- Unselected categories -->
     <a
-    [hidden]="!editMode || category.active"
-    (click)="setActive(category._id, true)"
-    *ngFor="let category of categories"
-    class="category category-disabled"
-    >
-    <span class="fa fa-{{category.icon}}"></span>
-    
+      *ngFor="let category of categories"
+      [hidden]="!editMode || category.active"
+      (click)="setActive(category._id, true)"
+      class="category category-disabled"
+      >
+      <span class="fa fa-{{category.icon}}"></span>
     </a>
+
+    <!-- Selected categories. -->
+    <a
+      *ngFor="let category of categories"
+      [hidden]="!category.active"
+      (click)="setActive(category._id, false)"
+      class="category bn-blue"
+      >
+      <span class="fa fa-{{category.icon}}"></span>
+        {{category.title}}
+    </a>
+
+    
   </span>
   
 </div>
