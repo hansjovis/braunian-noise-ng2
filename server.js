@@ -12,6 +12,7 @@ const express = require('express');
 const app = require('./backend/config/express')(passport);
 
 // Setup routes.
+require('./backend/routes/article')(app);
 require('./backend/routes/article-category')(app);
 
 const path = require('path');
@@ -59,6 +60,10 @@ app.post('/api/logout', function(req, res) {
 	res.status(200).send({text: 'Successfully logged out!'});
 });
 
+app.get('/api/test', function(req, res){
+  console.log(req);
+  res.status(200).send({text: 'Test!'});
+})
 
 
 // Main entry point for serving the Angular app.

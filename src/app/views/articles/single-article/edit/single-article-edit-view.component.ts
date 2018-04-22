@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { AuthenticateService } from '../../../../services/authenticate-service/authenticate.service';
+import { NewArticleService } from '../../../../services/new-article-service/new-article.service';
 
 import { Article } from '../../../../model/article-new';
 import { TextRow } from '../../../../model/article-rows/text-row';
@@ -23,7 +24,8 @@ export class SingleArticleEditViewComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private location: Location,
-    private authenticateService: AuthenticateService
+    private authenticateService: AuthenticateService,
+    private articleService: NewArticleService
   ) { }
 
   ngOnInit() {
@@ -73,7 +75,17 @@ export class SingleArticleEditViewComponent implements OnInit {
   }
 
   save(): void {
-    console.log(this.article);
+
+    // Only save all active categories.
+    let activeCategories = this.article.categories
+      .filter(category => category.active);
+    this.article.categories = activeCategories || [];
+
+    this.articleService.saveArticle(this.article).toPromise()
+      .then(
+        response => console.log(response),
+        error => console.error(error)
+      );
   }
 
   deleteRow(rowIndex: number): void {
