@@ -5,6 +5,7 @@ export class ImageRow extends ArticleRow {
 
   public type = "IMAGE";
   public src: string;
+  public fileName: string;
   public caption: string;
 
 } 

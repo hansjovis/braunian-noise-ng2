@@ -68,6 +68,7 @@ app.get('/api/test', function(req, res){
 
 // Main entry point for serving the Angular app.
 app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, 'uploads')));
 app.get('/*', (req, res) => {
 	res.sendFile('index.html', {root: path.join(__dirname, 'dist')});
 });

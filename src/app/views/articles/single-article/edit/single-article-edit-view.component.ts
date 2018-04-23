@@ -9,6 +9,7 @@ import { Article } from '../../../../model/article-new';
 import { TextRow } from '../../../../model/article-rows/text-row';
 import { ImageRow } from '../../../../model/article-rows/image-row';
 import { ArticleCategory } from '../../../../model/article-category';
+import { flatten } from '@angular/compiler';
 
 @Component({
   selector: 'app-single-article-edit-view',
@@ -71,7 +72,11 @@ export class SingleArticleEditViewComponent implements OnInit {
     reader.onload = (e: any) => {
       this.article.header_img.src = e.target.result;
     };
-    reader.readAsDataURL(event.target.files[0]);
+
+    let file = event.target.files[0];
+
+    this.article.header_img.fileName = file.name;
+    reader.readAsDataURL(file);
   }
 
   save(): void {

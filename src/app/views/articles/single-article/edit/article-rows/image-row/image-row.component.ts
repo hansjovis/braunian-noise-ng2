@@ -33,7 +33,11 @@ export class ImageRowComponent implements OnInit {
     reader.onload = (e: any) => {
       this.row.src = e.target.result;
     };
-    reader.readAsDataURL(event.target.files[0]);
+
+    let file = event.target.files[0];
+
+    this.row.fileName = file.name;
+    reader.readAsDataURL(file);
   }
 
 }
