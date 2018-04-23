@@ -3,7 +3,7 @@ import { ArticleRow } from '../article-row';
 
 export class TextRow extends ArticleRow {
 
-  public type = "TEXT";
+  public rowType = "TEXT";
   /** Raw text, in markdown.  */
   public textRaw: string;
   /** HTML-rendered markdown of the text. */

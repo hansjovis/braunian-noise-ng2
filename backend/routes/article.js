@@ -1,4 +1,6 @@
 
+const Article = require('../models/article');
+
 const is_logged_in = require('../helper/is_logged_in');
 
 const fs = require('fs');
@@ -61,10 +63,45 @@ const writeImages = function(article) {
     image_paths.push(header_path);
 
     // Then: images in the content.
-    let images = article.rows.filter(row => row.type === 'IMAGE');
+    let images = article.rows.filter(row => row.rowType === 'IMAGE');
     let paths = images.map(image => writeImage(image.src, path.join(pathToImages, `${articleID}-${image.fileName}`)));
     
     return image_paths.concat(paths);
+}
+
+const saveArticle = function(article) {
+
+  // Check if the article already exists.
+  Article.findById(article._id,
+    (err, found_article) => {
+      if(err) {
+        throw err;
+      }
+      if(found_article) {
+        // Save over existing article.
+        console.log(found_article);
+        Article.findByIdAndUpdate(found_article._id, article, 
+          (error, response) => {
+            if(error) {
+              throw error;
+            }
+            else {
+              return true;
+            }
+        })
+      }
+      else {
+        // Save new article.
+        try {
+          let new_article = new Article(article);
+          new_article.save();
+          return false;
+        } catch (error) {
+          throw error;
+        }
+      }
+      
+  });
 }
 
 module.exports = function(app) {
@@ -84,7 +121,7 @@ module.exports = function(app) {
     // Replace image data with URLs to the same images on disk.
     article.header_img.src = image_paths.shift();
     article.rows = article.rows.map((row, i) => {
-      if (row.type === 'IMAGE') {
+      if (row.rowType === 'IMAGE') {
         row.src = image_paths.shift();
       }
       return row;
@@ -95,7 +132,18 @@ module.exports = function(app) {
 
     console.log(article);
 
-    res.status(200).send({message: 'Article succesfully added.'});
+    try {
+      let alreadyExists = saveArticle(article);
+      if (alreadyExists) {
+        res.status(200).send({message: 'Article succesfully added.'});
+      } else {
+        res.status(200).send({message: 'Article succesfully updated.'});
+      }
+      
+    } catch (error) {
+      console.error(error);
+      res.status(400).send({message: 'An error occurred during saving.'});
+    }
   });
 
 }

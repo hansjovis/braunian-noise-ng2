@@ -21,7 +21,7 @@ export class TextRowComponent implements OnInit {
 
   ngOnInit() {
     this.inEditMode = false;
-    this.row.text = "Hello World!";
+    this.row.textRaw = "Hello World!";
     this.converter = new showdown.Converter();
   }
 
