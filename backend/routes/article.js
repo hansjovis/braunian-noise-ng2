@@ -86,7 +86,7 @@ const saveArticle = function(article) {
               throw error;
             }
             else {
-              return true;
+              return found_article._id;
             }
         })
       }
@@ -94,8 +94,9 @@ const saveArticle = function(article) {
         // Save new article.
         try {
           let new_article = new Article(article);
-          new_article.save();
-          return false;
+          new_article.save((err, new_article) => {
+            return new_article._id;
+          });
         } catch (error) {
           throw error;
         }
@@ -127,19 +128,12 @@ module.exports = function(app) {
       return row;
     });
 
-    // Replace categories with their IDs.
-    article.categories = article.categories.map(category => category._id);
-
     console.log(article);
 
     try {
-      let alreadyExists = saveArticle(article);
-      if (alreadyExists) {
-        res.status(200).send({message: 'Article succesfully added.'});
-      } else {
-        res.status(200).send({message: 'Article succesfully updated.'});
-      }
-      
+      // Save article to DB.
+      let id = saveArticle(article);
+      res.status(200).send({message: 'Article successfuly added or updated.', id: id});
     } catch (error) {
       console.error(error);
       res.status(400).send({message: 'An error occurred during saving.'});
