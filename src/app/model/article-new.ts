@@ -25,8 +25,8 @@ export class Article {
     public description?: string,
     public author?: string,
     public date?: number,
-    public categories?: String[],
-    public rows?: ArticleRow[]
+    public categories: String[] = [],
+    public rows: ArticleRow[] = []
   ){ }
 
   /**
