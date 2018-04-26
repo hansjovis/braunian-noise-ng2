@@ -1,22 +1,20 @@
 
-import { ArticleRow } from './article-row';
 import { ImageRow } from './article-rows/image-row';
-import { ArticleCategory } from './article-category';
 
 /**
  *  A blog article.
  */
-export class Article {
+export class ArticlePreview {
 
   /**
    * Makes a new article
    * @param {string} _id
    * @param {ImageRow} header_img
    * @param {string} title 
+   * @param {string} description 
    * @param {string} author 
    * @param {number} date in milliseconds
-   * @param {String[]} categories 
-   * @param {ArticleRow[]} rows the content of the article
+   * @param {string} categories 
    */
   constructor(
     public _id?: string,
@@ -25,17 +23,16 @@ export class Article {
     public description?: string,
     public author?: string,
     public date?: number,
-    public categories: String[] = [],
-    public rows: ArticleRow[] = []
+    public categories?: string[],
   ){ }
 
   /**
    * Clones this article.
-   * @returns {Article} a clone of this article
+   * @returns {ArticlePreview} a clone of this article
    */
-  public clone(): Article {
-    return new Article(this._id, this.header_img,
+  public clone(): ArticlePreview {
+    return new ArticlePreview(this._id, this.header_img,
       this.title, this.description, this.author,
-      this.date, this.categories, this.rows);
+      this.date, this.categories);
   }
 }

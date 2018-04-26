@@ -8,4 +8,8 @@ export class ImageRow extends ArticleRow {
   public fileName: string;
   public caption: string;
 
+  constructor() {
+    super();
+  }
+
 } 

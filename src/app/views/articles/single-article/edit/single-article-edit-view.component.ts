@@ -5,7 +5,7 @@ import { Location } from '@angular/common';
 import { AuthenticateService } from '../../../../services/authenticate-service/authenticate.service';
 import { NewArticleService } from '../../../../services/new-article-service/new-article.service';
 
-import { Article } from '../../../../model/article-new';
+import { Article } from '../../../../model/article';
 import { TextRow } from '../../../../model/article-rows/text-row';
 import { ImageRow } from '../../../../model/article-rows/image-row';
 import { ArticleCategory } from '../../../../model/article-category';

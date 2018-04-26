@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
-import { ArticleService } from '../../../../services/article-service/article.service';
-import { Article } from '../../../../model/article';
+import { NewArticleService } from '../../../../services/new-article-service/new-article.service';
+import { ArticlePreview } from '../../../../model/article-preview';
 import { AuthenticateService } from '../../../../services/authenticate-service/authenticate.service';
 
 @Component({
@@ -12,10 +12,10 @@ import { AuthenticateService } from '../../../../services/authenticate-service/a
 })
 export class ArticleListComponent implements OnInit {
 
-  articles: Article[];
+  articles: ArticlePreview[];
   @Input() activeCategories: string[];
 
-  constructor(private articleService: ArticleService,
+  constructor(private articleService: NewArticleService,
               private authenticateService: AuthenticateService) { }
 
   ngOnInit() {
@@ -38,7 +38,7 @@ export class ArticleListComponent implements OnInit {
    * @param categories the categories to check.
    * @return true if all of the given categories are included in the article's categories.  
    */
-  public articleHasCategories(article: Article, categories: string[]): boolean {
+  public articleHasCategories(article: ArticlePreview, categories: string[]): boolean {
     return categories.every(cat => article.categories.includes(cat));
   }
 
@@ -46,8 +46,11 @@ export class ArticleListComponent implements OnInit {
    * Retrieves the list of articles.
    */
   private getArticles(): void {
-    this.articleService.getArticles()
-        .subscribe(articles => this.articles = articles);
+    this.articleService.getArticlePreviews()
+        .subscribe(articles => {
+          console.log(articles);
+          this.articles = articles;
+        });
   }
 
 }

@@ -1,9 +1,9 @@
-import { Article } from '../model/article'
+import { ArticlePreview } from '../model/article-preview'
 
-export const MOCK_ARTICLES: Article[] = [
-  new Article(
+export const MOCK_ARTICLES: ArticlePreview[] = [
+  new ArticlePreview(
     '1',  // id
-    'assets/articles/mock/placeholder-image600x300.jpg', // main image
+    null, // main image
     'Mock-up Article #1', // title
 
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' +  // contents.
@@ -15,9 +15,9 @@ export const MOCK_ARTICLES: Article[] = [
     1512936509695 , // date (in milliseconds)
     ['1', '2']  // categories (as id's)
   ),
-  new Article(
+  new ArticlePreview(
     '2',
-    'assets/articles/mock/placeholder-image600x300.jpg',
+    null,
     'Mock-up Article #2',
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' +
     'Aenean placerat elit diam, eget sodales ipsum tristique in.' +
@@ -27,9 +27,9 @@ export const MOCK_ARTICLES: Article[] = [
     1512936509695 ,
     ['1']
   ),
-  new Article(
+  new ArticlePreview(
     '3',
-    'assets/articles/mock/placeholder-image600x300.jpg',
+    null,
     'Mock-up Article #3',
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' +
     'Aenean placerat elit diam, eget sodales ipsum tristique in.' +

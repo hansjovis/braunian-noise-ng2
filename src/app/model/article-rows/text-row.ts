@@ -9,6 +9,10 @@ export class TextRow extends ArticleRow {
   /** HTML-rendered markdown of the text. */
   public text: string;
 
+  constructor() {
+    super();
+  }
+
   /**
    * Sets the text of this row, written in markdown.
    * Text gets automatically generated to html.

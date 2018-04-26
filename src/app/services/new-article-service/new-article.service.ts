@@ -4,8 +4,9 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { Article } from '../../model/article-new';
+import { Article } from '../../model/article';
 import { MOCK_ARTICLE_CATEGORIES } from '../mock-article-categories';
+import { ArticlePreview } from '../../model/article-preview';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -16,6 +17,7 @@ export class NewArticleService {
 
   private API_URL = "api/";
   private URL = this.API_URL + "article";
+  private PREVIEW_URL = this.API_URL + "article-preview"; 
 
   constructor(private http: HttpClient) { }
   
@@ -27,6 +29,10 @@ export class NewArticleService {
   public saveArticle(article: Article): Observable<Object> {
     console.log(article);
     return this.http.post(this.URL, article, httpOptions);
+  }
+
+  public getArticlePreviews(): Observable<ArticlePreview[]> {
+    return this.http.get<ArticlePreview[]>(this.PREVIEW_URL, httpOptions);
   }
 
 
