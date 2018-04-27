@@ -12,7 +12,10 @@ let Article = mongoose.model('Article', {
   description: String,
   author: String,
   date: Number,
-  categories: [String],
+  categories: {
+    type: Array,
+    default: []
+  },
   rows: {
     type: Array,
     default: []

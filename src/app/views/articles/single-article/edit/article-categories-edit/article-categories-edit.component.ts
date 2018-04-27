@@ -10,9 +10,8 @@ import { ArticleCategoryService } from '../../../../../services/article-category
 })
 export class ArticleCategoriesEditComponent implements OnInit {
 
-  @Input() public categories: String[]
-  private allCategories: ArticleCategory[]
-  @Output() public change: EventEmitter<String[]> = new EventEmitter(); 
+  @Input() public categories: ArticleCategory[]
+  @Output() public change: EventEmitter<ArticleCategory[]> = new EventEmitter(); 
 
   private editMode: boolean;
   /** If any category is set to active (e.g. added to the article). */
@@ -34,12 +33,8 @@ export class ArticleCategoriesEditComponent implements OnInit {
   private loadAvailableCategories(): void {
     this.categoryService.getCategories().subscribe(
       categories => {
-        this.allCategories = categories;
-        // Set all selected categories to active.
-        let selectedCategories = this.allCategories.filter(cat => this.categories.includes(cat._id));
-        selectedCategories.forEach(cat => cat.active = true);
-        
-        this.nonActive = selectedCategories.length === 0;
+        this.categories = categories
+        this.nonActive = this.categories.every(category => !category.active);
       }
     );
   }
@@ -58,16 +53,9 @@ export class ArticleCategoriesEditComponent implements OnInit {
    * @param active whether the category with the given ID should be set to active (true) or inactive (false)
    */
   private setActive(categoryId: string, active: boolean) {
-
-    let category = this.allCategories.find(category => category._id === categoryId);
+    let category = this.categories.find(category => category._id === categoryId);
     category.active = active;
-
-    this.categories = this.allCategories
-      .filter(category => category.active)
-      .map(category => category._id);
-
-    this.nonActive = this.categories.length === 0;
-
+    this.nonActive = this.categories.every(category => !category.active);
     this.change.emit(this.categories);
   }
 

@@ -8,7 +8,7 @@
 
     <!-- Unselected categories -->
     <a
-      *ngFor="let category of allCategories"
+      *ngFor="let category of categories"
       [hidden]="!editMode || category.active"
       (click)="setActive(category._id, true)"
       class="category category-disabled"
@@ -18,7 +18,7 @@
 
     <!-- Selected categories. -->
     <a
-      *ngFor="let category of allCategories"
+      *ngFor="let category of categories"
       [hidden]="!category.active"
       (click)="setActive(category._id, false)"
       class="category bn-blue"

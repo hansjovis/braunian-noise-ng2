@@ -15,7 +15,7 @@ export class Article {
    * @param {string} title 
    * @param {string} author 
    * @param {number} date in milliseconds
-   * @param {String[]} categories 
+   * @param {ArticleCategory[]} categories 
    * @param {ArticleRow[]} rows the content of the article
    */
   constructor(
@@ -25,8 +25,8 @@ export class Article {
     public description?: string,
     public author?: string,
     public date?: number,
-    public categories: String[] = [],
-    public rows: ArticleRow[] = []
+    public categories?: ArticleCategory[],
+    public rows?: ArticleRow[]
   ){ }
 
   /**

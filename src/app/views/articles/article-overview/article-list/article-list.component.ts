@@ -4,6 +4,7 @@ import { RouterLink } from '@angular/router';
 import { NewArticleService } from '../../../../services/new-article-service/new-article.service';
 import { ArticlePreview } from '../../../../model/article-preview';
 import { AuthenticateService } from '../../../../services/authenticate-service/authenticate.service';
+import { ArticleCategory } from '../../../../model/article-category';
 
 @Component({
   selector: 'app-article-list',
@@ -13,7 +14,7 @@ import { AuthenticateService } from '../../../../services/authenticate-service/a
 export class ArticleListComponent implements OnInit {
 
   articles: ArticlePreview[];
-  @Input() activeCategories: string[];
+  @Input() activeCategories: ArticleCategory[];
 
   constructor(private articleService: NewArticleService,
               private authenticateService: AuthenticateService) { }
@@ -39,7 +40,7 @@ export class ArticleListComponent implements OnInit {
    * @return true if all of the given categories are included in the article's categories.  
    */
   public articleHasCategories(article: ArticlePreview, categories: string[]): boolean {
-    return categories.every(cat => article.categories.includes(cat));
+    return categories.every(id => article.categories.some(category => category._id === id));
   }
 
   /**

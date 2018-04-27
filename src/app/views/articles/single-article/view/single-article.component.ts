@@ -15,8 +15,6 @@ export class SingleArticleViewComponent implements OnInit {
   private articleID: String;
   private article: Article;
 
-  private categories: ArticleCategory[];
-
   constructor(
     private route: ActivatedRoute,
     private location: Location,
@@ -27,9 +25,11 @@ export class SingleArticleViewComponent implements OnInit {
 
   ngOnInit() {
     this.articleID = this.route.snapshot.paramMap.get('id');
-    this.articleService.getArticle(this.articleID).toPromise().then(
-      article => this.article = article,
-      error => console.error(error)
+    this.articleService.getArticle(this.articleID).subscribe(
+      article => {
+        this.article = article;
+        console.log(article);
+      }
     );
   }
 

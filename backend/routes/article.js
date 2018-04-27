@@ -108,7 +108,7 @@ const saveArticle = function(article) {
               throw error;
             }
             else {
-              return found_article._id;
+              return true;
             }
         })
       }
@@ -116,9 +116,8 @@ const saveArticle = function(article) {
         // Save new article.
         try {
           let new_article = new Article(article);
-          new_article.save((err, new_article) => {
-            return new_article._id;
-          });
+          new_article.save();
+          return false;
         } catch (error) {
           throw error;
         }

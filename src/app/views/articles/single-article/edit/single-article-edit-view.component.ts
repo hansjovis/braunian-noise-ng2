@@ -20,7 +20,6 @@ export class SingleArticleEditViewComponent implements OnInit {
 
   private articleID: String;
   private article: Article;
-
   @ViewChild('headerImageUpload') headerImageUpload: any;  
 
   constructor(
@@ -42,6 +41,7 @@ export class SingleArticleEditViewComponent implements OnInit {
       
       this.article.date = Date.now();
       this.article.author = this.authenticateService.getLoggedInUser().screenname;
+      this.article.rows = [];
 
     } else {
       // Retrieve existing article from server.
@@ -85,6 +85,11 @@ export class SingleArticleEditViewComponent implements OnInit {
 
   save(): void {
 
+    // Only save all active categories.
+    let activeCategories = this.article.categories
+      .filter(category => category.active);
+    this.article.categories = activeCategories || [];
+
     this.articleService.saveArticle(this.article).toPromise()
       .then(
         response => console.log(response),
@@ -96,11 +101,7 @@ export class SingleArticleEditViewComponent implements OnInit {
     this.article.rows.splice(rowIndex, 1);
   }
 
-  /**
-   * Sets the categories of the article.
-   * @param categories array of category IDs
-   */
-  setCategories(categories: String[]) {
+  setCategories(categories: ArticleCategory[]) {
     this.article.categories = categories;
   }
 

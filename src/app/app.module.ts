@@ -23,7 +23,6 @@ import { ArticleCategoryService } from './services/article-category-service/arti
 
 import { HttpClientModule } from '@angular/common/http';
 
-import { ArticleService } from './services/article-service/article.service';
 import { NewArticleService } from './services/new-article-service/new-article.service';
 import { PortfolioItemService } from './services/portfolio-item-service/portfolio-item.service';
 import { AuthenticateService } from './services/authenticate-service/authenticate.service';
@@ -70,7 +69,6 @@ import { ImageRowComponent } from './views/articles/single-article/view/article-
     FormsModule
   ],
   providers: [
-    ArticleService, 
     PortfolioItemService, 
     AuthenticateService,
     ArticleCategoryService,

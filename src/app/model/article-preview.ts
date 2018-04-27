@@ -1,5 +1,6 @@
 
 import { ImageRow } from './article-rows/image-row';
+import { ArticleCategory } from './article-category'
 
 /**
  *  A blog article.
@@ -14,7 +15,7 @@ export class ArticlePreview {
    * @param {string} description 
    * @param {string} author 
    * @param {number} date in milliseconds
-   * @param {string} categories 
+   * @param {ArticleCategory[]} categories 
    */
   constructor(
     public _id?: string,
@@ -23,7 +24,7 @@ export class ArticlePreview {
     public description?: string,
     public author?: string,
     public date?: number,
-    public categories?: string[],
+    public categories?: ArticleCategory[]
   ){ }
 
   /**
