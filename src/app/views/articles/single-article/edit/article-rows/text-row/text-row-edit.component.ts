@@ -6,11 +6,11 @@ import { TextRow } from '../../../../../../model/article-rows/text-row';
 declare var showdown: any;
 
 @Component({
-  selector: 'app-text-row',
-  templateUrl: './text-row.component.html',
-  styleUrls: ['./text-row.component.css']
+  selector: 'app-text-row-edit',
+  templateUrl: './text-row-edit.component.html',
+  styleUrls: ['./text-row-edit.component.css']
 })
-export class TextRowComponent implements OnInit {
+export class TextRowEditComponent implements OnInit {
 
   inEditMode: boolean;
   @Input() row: TextRow;

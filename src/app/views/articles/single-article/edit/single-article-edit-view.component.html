@@ -32,8 +32,8 @@
       <!-- Delete row button. -->
       <a class="pull-right" (click)="deleteRow(i)"><span class="close-icon fa fa-times"></span></a>
       <!-- Actual row components. -->
-      <app-text-row *ngIf="row.rowType === 'TEXT'" [row]="row"></app-text-row>
-      <app-image-row *ngIf="row.rowType === 'IMAGE'" [row]="row"></app-image-row>
+      <app-text-row-edit *ngIf="row.rowType === 'TEXT'" [row]="row"></app-text-row-edit>
+      <app-image-row-edit *ngIf="row.rowType === 'IMAGE'" [row]="row"></app-image-row-edit>
     </div>
 
     <!-- Row of buttons to add new content row of specific type. -->

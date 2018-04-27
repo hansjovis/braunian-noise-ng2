@@ -3,11 +3,11 @@ import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { ImageRow } from '../../../../../../model/article-rows/image-row';
 
 @Component({
-  selector: 'app-image-row',
-  templateUrl: './image-row.component.html',
-  styleUrls: ['./image-row.component.css']
+  selector: 'app-image-row-edit',
+  templateUrl: './image-row-edit.component.html',
+  styleUrls: ['./image-row-edit.component.css']
 })
-export class ImageRowComponent implements OnInit {
+export class ImageRowEditComponent implements OnInit {
 
 
   @Input() public row: ImageRow;

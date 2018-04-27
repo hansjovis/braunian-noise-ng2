@@ -181,8 +181,29 @@ module.exports = function(app) {
           res.status(200).send(articles);
         }
       });
-
     }
-  )
+  );
+
+  // Get article
+  app.get('/api/article',
+    (req, res) => {
+      let id = req.query.id;
+      Article.findById(id).then(
+        article => res.status(200).send(article),
+        error => res.status(400).send(error)
+      );
+    }
+  );
+
+  // Delete article
+  app.delete('/api/article',
+    (req, res) => {
+      let id = req.query.id;
+      Article.findByIdAndRemove(id).then(
+        response => res.status(200).send(response),
+        error => res.status(400).send(error)
+      )
+    }
+  );
 
 }

@@ -1,0 +1,62 @@
+
+.article-block {
+  padding: 10px;
+}
+
+.header-img {
+  object-fit: cover;
+  width: 100%;
+  height: 250px;
+
+  border-radius: 20px 20px 0px 0px;
+}
+
+.article-border {
+  border-right: #d9d9d9 solid 10px;
+  border-left: #d9d9d9 solid 10px;
+  border-radius: 20px;
+}
+
+.caption {
+  width: 100%;
+  text-align: center;
+  color: rgb(56, 56, 56);
+  font-style: italic;
+}
+
+.header-1 {
+  font-family: 'Russo-One';
+  font-size: 40px;
+}
+
+.metadata {
+  padding: 10px;
+  width: 100%;
+  text-align: left;
+  color: rgb(56, 56, 56);
+  font-style: italic;
+}
+
+.add-content-row {
+  padding-left: 10px;
+}
+
+.close-icon {
+  font-size: 16px;
+}
+
+.category-block {
+  margin: 5px 0px;
+  width: 100%;
+  min-height: 20px;
+}
+
+.category {
+  padding: 5px;
+  margin: 3px;
+  border-radius: 3px;
+  
+  min-width: 40px;
+
+  color: white;
+}

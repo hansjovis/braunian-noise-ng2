@@ -1,3 +1,30 @@
-<p>
-  Viewing article {{articleID}}!
-</p>
+<div class="article-border">
+  <article class="article-block">
+    <!-- Header image. -->
+    <figure>
+      <img id="header-image" class="header-img" src="{{article.header_img.src}}" alt="{{article.header_img.caption}}" (click)="triggerUploadImage()">
+      <figcaption class="caption">{{article.header_img.caption}}</figcaption>
+    </figure>
+    <!-- Title. -->
+    <header>
+      <h1>{{article.title}}</h1>
+    </header>
+    
+    <!-- Metadata (author, date, categories) -->
+    <div class="metadata">
+      <div>Posted on {{article.date | date:'yyyy-MM-dd'}} by {{article.author}}</div>
+      <span *ngFor="let category of article.categories" class="category bn-blue">
+        <span class="fa fa-{{category.icon}}"></span>
+          {{category.title}}
+      </span>
+    </div>
+    
+    <!-- Content rows, e.g. paragraph or image. -->
+    <div *ngFor="let row of article.rows; let i = index">
+      <!-- Actual row components. -->
+      <app-text-row *ngIf="row.rowType === 'TEXT'" [row]="row"></app-text-row>
+      <app-image-row *ngIf="row.rowType === 'IMAGE'" [row]="row"></app-image-row>
+    </div>
+
+  </article>
+</div>

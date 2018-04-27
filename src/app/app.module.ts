@@ -36,9 +36,11 @@ import { SingleArticleViewComponent } from './views/articles/single-article/view
 import { SingleArticleEditViewComponent } from './views/articles/single-article/edit/single-article-edit-view.component';
 
 
-import { TextRowComponent } from './views/articles/single-article/edit/article-rows/text-row/text-row.component';
-import { ImageRowComponent } from './views/articles/single-article/edit/article-rows/image-row/image-row.component';
+import { TextRowEditComponent } from './views/articles/single-article/edit/article-rows/text-row/text-row-edit.component';
+import { ImageRowEditComponent } from './views/articles/single-article/edit/article-rows/image-row/image-row-edit.component';
 import { ArticleCategoriesEditComponent } from './views/articles/single-article/edit/article-categories-edit/article-categories-edit.component';
+import { TextRowComponent } from './views/articles/single-article/view/article-rows/text-row/text-row.component';
+import { ImageRowComponent } from './views/articles/single-article/view/article-rows/image-row/image-row.component';
 
 @NgModule({
   declarations: [
@@ -55,9 +57,11 @@ import { ArticleCategoriesEditComponent } from './views/articles/single-article/
     SingleArticleViewComponent,
     SingleArticleEditViewComponent,
     ArticleCategoriesComponent,
+    TextRowEditComponent,
+    ImageRowEditComponent,
+    ArticleCategoriesEditComponent,
     TextRowComponent,
-    ImageRowComponent,
-    ArticleCategoriesEditComponent
+    ImageRowComponent
   ],
   imports: [
     BrowserModule,

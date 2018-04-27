@@ -27,12 +27,16 @@ export class NewArticleService {
    * @returns the http response.
    */
   public saveArticle(article: Article): Observable<Object> {
-    console.log(article);
     return this.http.post(this.URL, article, httpOptions);
   }
 
   public getArticlePreviews(): Observable<ArticlePreview[]> {
     return this.http.get<ArticlePreview[]>(this.PREVIEW_URL, httpOptions);
+  }
+
+  public getArticle(id: String): Observable<Article> {
+    let url = `${this.URL}?id=${id}`
+    return this.http.get<Article>(url, httpOptions);
   }
 
 

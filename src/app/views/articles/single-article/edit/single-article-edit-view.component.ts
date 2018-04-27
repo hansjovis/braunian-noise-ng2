@@ -45,6 +45,10 @@ export class SingleArticleEditViewComponent implements OnInit {
 
     } else {
       // Retrieve existing article from server.
+      this.articleService.getArticle(this.articleID).toPromise().then(
+        article => this.article = article,
+        error => console.error(error)
+      );
     }
   }
 
