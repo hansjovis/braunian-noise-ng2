@@ -13,14 +13,16 @@ import { NewArticleService } from '../../../../services/new-article-service/new-
 export class SingleArticleViewComponent implements OnInit {
 
   private articleID: String;
-  private article: Article;
+  public article: Article;
+
+  public loaded: boolean;
 
   constructor(
     private route: ActivatedRoute,
     private location: Location,
     private articleService: NewArticleService
   ) {
-
+    
   }
 
   ngOnInit() {

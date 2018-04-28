@@ -1,5 +1,6 @@
 <div class="article-border">
-  <article class="article-block">
+
+  <article class="article-block" *ngIf="article">
     <!-- Header image. -->
     <figure>
       <img id="header-image" class="header-img" src="{{article.header_img.src}}" alt="{{article.header_img.caption}}">
@@ -14,7 +15,7 @@
     <div class="metadata">
       <div>Posted on {{article.date | date:'yyyy-MM-dd'}} by {{article.author}}</div>
       
-      <span *ngFor="let category of article.categories" class="category bn-blue">
+      <span *ngFor="let category of article.categories" class="pull-right category bn-blue">
         <span class="fa fa-{{category.icon}}"></span>
           {{category.title}}
       </span>
