@@ -149,9 +149,9 @@ module.exports = function(app) {
         return row;
       });
 
-      // Replace description with first 256 characters of the first text row.
+      // Replace description with first 252 characters of the first text row plus ellipses.
       article.description = article.rows.find(row => row.rowType === ROWTYPES.TEXT)
-        .textRaw.substring(0, 256);
+        .textRaw.substring(0, 252) + "... ";
 
       console.log(article);
 
