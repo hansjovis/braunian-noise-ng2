@@ -30,7 +30,7 @@
             <span class="fa fa-eye-slash"></span>
           </a>
           <!-- Delete post. -->
-          <a class="btn btn-default">
+          <a class="btn btn-default" (click)="showDeleteDialog(article)">
             <span class="fa fa-trash-o"></span>
           </a>
         </div>
@@ -38,4 +38,7 @@
       </div>
     </div>    
   </div>
+
+  <!-- Delete article dialog -->
+  <app-delete-article-dialog #deleteArticleDialog (onDelete)="getArticles()"></app-delete-article-dialog>
 </div>

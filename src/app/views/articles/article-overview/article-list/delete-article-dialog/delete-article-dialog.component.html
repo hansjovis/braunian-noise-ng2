@@ -1,0 +1,19 @@
+<app-modal #modal>
+
+  <div class="app-modal-header">
+    Delete Article
+  </div>
+
+  <div class="app-modal-body">
+    Are you sure you want to delete the article titled '{{article?.title}}'?<br>
+    This cannot be undone.<br>
+    If you do not want this article to show up for visitors, you can hide it instead.
+  </div>
+  
+  <div class="app-modal-footer">
+    <button type="button" class="btn btn-danger" (click)="delete()">Delete Article</button>
+    <button type="button" class="btn btn-default" (click)="hide()">Hide Article</button>
+    <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
+  </div>
+</app-modal>  
+

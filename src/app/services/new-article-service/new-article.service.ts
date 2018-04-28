@@ -35,8 +35,13 @@ export class NewArticleService {
   }
 
   public getArticle(id: String): Observable<Article> {
-    let url = `${this.URL}?id=${id}`
+    let url = `${this.URL}?id=${id}`;
     return this.http.get<Article>(url, httpOptions);
+  }
+
+  public delete(id: String): Observable<Object> {
+    let url = `${this.URL}?id=${id}`;
+    return this.http.delete(url, httpOptions);
   }
 
 

@@ -40,6 +40,7 @@ import { ImageRowEditComponent } from './views/articles/single-article/edit/arti
 import { ArticleCategoriesEditComponent } from './views/articles/single-article/edit/article-categories-edit/article-categories-edit.component';
 import { TextRowComponent } from './views/articles/single-article/view/article-rows/text-row/text-row.component';
 import { ImageRowComponent } from './views/articles/single-article/view/article-rows/image-row/image-row.component';
+import { DeleteArticleDialogComponent } from './views/articles/article-overview/article-list/delete-article-dialog/delete-article-dialog.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { ImageRowComponent } from './views/articles/single-article/view/article-
     ImageRowEditComponent,
     ArticleCategoriesEditComponent,
     TextRowComponent,
-    ImageRowComponent
+    ImageRowComponent,
+    DeleteArticleDialogComponent
   ],
   imports: [
     BrowserModule,

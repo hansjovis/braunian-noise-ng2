@@ -1,10 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { NewArticleService } from '../../../../services/new-article-service/new-article.service';
 import { ArticlePreview } from '../../../../model/article-preview';
 import { AuthenticateService } from '../../../../services/authenticate-service/authenticate.service';
 import { ArticleCategory } from '../../../../model/article-category';
+import { DeleteArticleDialogComponent } from './delete-article-dialog/delete-article-dialog.component';
 
 @Component({
   selector: 'app-article-list',
@@ -15,6 +16,7 @@ export class ArticleListComponent implements OnInit {
 
   articles: ArticlePreview[];
   @Input() activeCategories: ArticleCategory[];
+  @ViewChild( DeleteArticleDialogComponent ) deleteArticleDialog: DeleteArticleDialogComponent; 
 
   constructor(private articleService: NewArticleService,
               private authenticateService: AuthenticateService) { }
@@ -52,6 +54,13 @@ export class ArticleListComponent implements OnInit {
           console.log(articles);
           this.articles = articles;
         });
+  }
+
+  /**
+   * Shows the delete article dialog.
+   */
+  private showDeleteDialog(article: ArticlePreview): void {
+    this.deleteArticleDialog.show(article);
   }
 
 }
