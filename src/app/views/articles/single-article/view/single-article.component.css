@@ -17,6 +17,10 @@
   border-radius: 20px;
 }
 
+.categories {
+  margin: 5px;
+}
+
 .caption {
   width: 100%;
   text-align: center;
@@ -25,6 +29,7 @@
 }
 
 .header-1 {
+  padding-left: 10px;
   font-family: 'Russo-One';
   font-size: 40px;
 }

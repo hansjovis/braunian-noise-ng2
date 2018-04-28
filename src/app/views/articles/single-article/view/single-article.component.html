@@ -7,18 +7,18 @@
       <figcaption class="caption">{{article.header_img.caption}}</figcaption>
     </figure>
     <!-- Title. -->
-    <header>
-      <h1>{{article.title}}</h1>
-    </header>
+    <h1 class="header-1">{{article.title}}</h1>
     
     <!-- Metadata (author, date, categories) -->
     <div class="metadata">
       <div>Posted on {{article.date | date:'yyyy-MM-dd'}} by {{article.author}}</div>
-      
-      <span *ngFor="let category of article.categories" class="pull-right category bn-blue">
-        <span class="fa fa-{{category.icon}}"></span>
-          {{category.title}}
-      </span>
+      <!-- Categories -->
+      <div class="pull-right categories">
+        <span *ngFor="let category of article.categories" class="category bn-blue">
+            <span class="fa fa-{{category.icon}}"></span>
+              {{category.title}}
+        </span>
+      </div>
     </div>
     
     <!-- Content rows, e.g. paragraph or image. -->
