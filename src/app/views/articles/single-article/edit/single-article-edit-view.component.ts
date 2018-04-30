@@ -52,7 +52,7 @@ export class SingleArticleEditViewComponent implements OnInit {
     }
   }
 
-  addRow(type: string): void {
+  private addRow(type: string): void {
     if(type === "TEXT") {
       let newRow = new TextRow();
       this.article.rows.push(newRow);
@@ -66,11 +66,11 @@ export class SingleArticleEditViewComponent implements OnInit {
    * Triggers the upload of the header image.
    * (Showing a file upload dialog)
    */
-  triggerUploadImage(): void {
+  private triggerUploadImage(): void {
     this.headerImageUpload.nativeElement.click();
   }
 
-  onImageUpload(event): void {
+  private onImageUpload(event): void {
     let reader = new FileReader();
 
     reader.onload = (e: any) => {
@@ -83,12 +83,7 @@ export class SingleArticleEditViewComponent implements OnInit {
     reader.readAsDataURL(file);
   }
 
-  save(): void {
-
-    // Only save all active categories.
-    let activeCategories = this.article.categories
-      .filter(category => category.active);
-    this.article.categories = activeCategories || [];
+  private save(): void {
 
     this.articleService.saveArticle(this.article).toPromise()
       .then(
@@ -97,11 +92,11 @@ export class SingleArticleEditViewComponent implements OnInit {
       );
   }
 
-  deleteRow(rowIndex: number): void {
+  private deleteRow(rowIndex: number): void {
     this.article.rows.splice(rowIndex, 1);
   }
 
-  setCategories(categories: ArticleCategory[]) {
+  private setCategories(categories: ArticleCategory[]) {
     this.article.categories = categories;
   }
 

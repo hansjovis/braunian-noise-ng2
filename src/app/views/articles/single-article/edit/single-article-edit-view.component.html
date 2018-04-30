@@ -1,5 +1,5 @@
 <div class="article-border">
-  <article class="article-block">
+  <article class="article-block" *ngIf="article">
     <!-- Header image. -->
     <figure>
       <!-- Clicking on the image triggers the file upload. -->
@@ -18,11 +18,7 @@
     <!-- Metadata (author, date, categories) -->
     <div class="metadata">
       <div>Posted on {{article.date | date:'yyyy-MM-dd'}} by {{article.author}}</div>
-      <app-article-categories-edit 
-        [categories]="article.categories"
-        (change)="setCategories($event)"
-        >
-      </app-article-categories-edit>
+      <app-article-categories-edit [activeCategories]="article.categories" (change)="setCategories($event)"></app-article-categories-edit>
     </div>
     
     
