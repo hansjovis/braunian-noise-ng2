@@ -2,6 +2,9 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.4.
 
+## Important notice
+**This repository is not under active development anymore and is thus archived. Dependencies are most likely outdated and can contain security issues. Fork this project at your own risk!**
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
